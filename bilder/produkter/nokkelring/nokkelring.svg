@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <filter id="metal-glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <radialGradient id="bead-coral" cx="35%" cy="30%">
+      <stop offset="0%" stop-color="#f0a888"/>
+      <stop offset="100%" stop-color="#c86848"/>
+    </radialGradient>
+    <radialGradient id="bead-mint" cx="35%" cy="30%">
+      <stop offset="0%" stop-color="#c0e4d4"/>
+      <stop offset="100%" stop-color="#7ab8a0"/>
+    </radialGradient>
+    <radialGradient id="bead-hav" cx="35%" cy="30%">
+      <stop offset="0%" stop-color="#a0d0e0"/>
+      <stop offset="100%" stop-color="#4a90a8"/>
+    </radialGradient>
+    <radialGradient id="bead-sand" cx="35%" cy="30%">
+      <stop offset="0%" stop-color="#f8e8d0"/>
+      <stop offset="100%" stop-color="#d4b890"/>
+    </radialGradient>
+    <radialGradient id="bead-white" cx="35%" cy="30%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d8d0c8"/>
+    </radialGradient>
+    <radialGradient id="ring-grad" cx="30%" cy="30%">
+      <stop offset="0%" stop-color="#e8e8e8"/>
+      <stop offset="60%" stop-color="#b0b8c0"/>
+      <stop offset="100%" stop-color="#808890"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="#e8f4f8"/>
+  <ellipse cx="200" cy="200" rx="155" ry="155" fill="#f0faff" opacity="0.6"/>
+
+  <!-- Subtle shadow under string -->
+  <ellipse cx="200" cy="360" rx="30" ry="8" fill="#3a2e2820"/>
+
+  <!-- KEY RING (metal ring at top) -->
+  <circle cx="200" cy="88" r="36" fill="none" stroke="url(#ring-grad)" stroke-width="12" filter="url(#metal-glow)"/>
+  <!-- Ring highlight -->
+  <path d="M176,64 Q200,55 224,64" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.6" stroke-linecap="round"/>
+
+  <!-- String/cord from ring down -->
+  <line x1="200" y1="120" x2="200" y2="345" stroke="#c8a870" stroke-width="3" stroke-linecap="round"/>
+  <!-- String shadow -->
+  <line x1="202" y1="120" x2="202" y2="345" stroke="#a88850" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+
+  <!-- BEADS - arranged vertically on the string -->
+  <!-- Each bead is a circle with a gradient for 3D effect -->
+
+  <!-- Bead 1 - coral -->
+  <circle cx="200" cy="138" r="12" fill="url(#bead-coral)" stroke="#c06848" stroke-width="1"/>
+  <circle cx="196" cy="134" r="3" fill="white" opacity="0.4"/>
+
+  <!-- Bead 2 - mint -->
+  <circle cx="200" cy="164" r="12" fill="url(#bead-mint)" stroke="#6aa890" stroke-width="1"/>
+  <circle cx="196" cy="160" r="3" fill="white" opacity="0.4"/>
+
+  <!-- Bead 3 - white/pearl -->
+  <circle cx="200" cy="190" r="12" fill="url(#bead-white)" stroke="#b8b0a8" stroke-width="1"/>
+  <circle cx="196" cy="186" r="3" fill="white" opacity="0.6"/>
+
+  <!-- LETTER BEAD B (ocean blue) -->
+  <circle cx="200" cy="216" r="13" fill="url(#bead-hav)" stroke="#3a7898" stroke-width="1.2"/>
+  <text x="200" y="221" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="white" opacity="0.95">B</text>
+
+  <!-- LETTER BEAD E (coral) -->
+  <circle cx="200" cy="244" r="13" fill="url(#bead-coral)" stroke="#c06848" stroke-width="1.2"/>
+  <text x="200" y="249" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="white" opacity="0.95">E</text>
+
+  <!-- LETTER BEAD A (mint) -->
+  <circle cx="200" cy="272" r="13" fill="url(#bead-mint)" stroke="#6aa890" stroke-width="1.2"/>
+  <text x="200" y="277" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="white" opacity="0.95">A</text>
+
+  <!-- LETTER BEAD C (sand) -->
+  <circle cx="200" cy="300" r="13" fill="url(#bead-sand)" stroke="#b49870" stroke-width="1.2"/>
+  <text x="200" y="305" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#5a4030" opacity="0.95">C</text>
+
+  <!-- LETTER BEAD H (ocean blue) -->
+  <circle cx="200" cy="328" r="13" fill="url(#bead-hav)" stroke="#3a7898" stroke-width="1.2"/>
+  <text x="200" y="333" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="white" opacity="0.95">H</text>
+
+  <!-- Tassel end knot -->
+  <circle cx="200" cy="348" r="6" fill="#c8a870" stroke="#a88850" stroke-width="1.2"/>
+
+  <!-- Small side beads for decoration (scattered around) -->
+  <!-- Left decorative mini-beads -->
+  <circle cx="170" cy="175" r="6" fill="url(#bead-coral)" stroke="#c06848" stroke-width="0.8" opacity="0.7"/>
+  <circle cx="162" cy="192" r="5" fill="url(#bead-mint)" stroke="#6aa890" stroke-width="0.8" opacity="0.6"/>
+
+  <!-- Right decorative mini-beads -->
+  <circle cx="230" cy="200" r="6" fill="url(#bead-hav)" stroke="#3a7898" stroke-width="0.8" opacity="0.7"/>
+  <circle cx="238" cy="218" r="5" fill="url(#bead-sand)" stroke="#b49870" stroke-width="0.8" opacity="0.6"/>
+
+  <!-- Small shell accent near ring -->
+  <g transform="translate(238,95) rotate(30)">
+    <path d="M0,-12 C8,-12 14,0 14,6 C14,12 8,14 0,14 C-8,14 -14,12 -14,6 C-14,0 -8,-12 0,-12 Z"
+          fill="#f0dcc8" stroke="#c8a882" stroke-width="1" opacity="0.8"/>
+    <line x1="0" y1="-12" x2="0" y2="14" stroke="#c8a882" stroke-width="0.6" opacity="0.4"/>
+    <line x1="0" y1="-12" x2="12" y2="8" stroke="#c8a882" stroke-width="0.6" opacity="0.4"/>
+    <line x1="0" y1="-12" x2="-12" y2="8" stroke="#c8a882" stroke-width="0.6" opacity="0.4"/>
+  </g>
+</svg>

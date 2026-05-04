@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bundle – Beachside Stories</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Beachside Stories</span>
+    <button class="nav-toggle" aria-label="Åpne meny" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Hjem</a></li>
+      <li><a href="produkter.html">Produkter</a></li>
+      <li><a href="bundle.html" class="active">Bundle</a></li>
+      <li><a href="bestill.html">Bestill</a></li>
+      <li><a href="request.html">Personlig tilpasning</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section style="padding:3rem clamp(1rem,5vw,3rem) 2rem;background:linear-gradient(135deg,var(--hav),var(--hav-deep));text-align:center;color:white">
+    <p style="font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;opacity:0.8;margin-bottom:0.5rem">Beste verdi</p>
+    <h1 style="font-size:clamp(1.8rem,5vw,3rem);margin-bottom:0.5rem;color:white">The Beachside Bundle</h1>
+    <p style="opacity:0.85;max-width:440px;margin:0 auto">
+      Få et komplett sett fra ditt favorittema – notatbok, nøkkelring og to bokmerker
+      samlet til én slagpris. Spar 7 kr mot å kjøpe enkeltvis.
+    </p>
+  </section>
+
+  <!-- HVA ER INKLUDERT -->
+  <section class="section-white">
+    <div class="section-header">
+      <p class="section-eyebrow">Alltid inkludert</p>
+      <h2>Hva er i en bundle?</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;max-width:700px;margin:0 auto 3rem">
+      <div style="text-align:center;padding:1.5rem;background:var(--sand);border-radius:var(--radius)">
+        <img src="bilder/produkter/notatblokk/notatblokk.svg" alt="Notatbok" style="width:80px;height:80px;object-fit:contain;margin-bottom:0.75rem">
+        <h4 style="margin-bottom:0.3rem">Notatbok</h4>
+        <p style="font-size:0.83rem;color:var(--tekst-soft)">1 stk – håndmalt</p>
+      </div>
+      <div style="text-align:center;padding:1.5rem;background:var(--sand);border-radius:var(--radius)">
+        <img src="bilder/produkter/nokkelring/nokkelring.svg" alt="Nøkkelring" style="width:80px;height:80px;object-fit:contain;margin-bottom:0.75rem">
+        <h4 style="margin-bottom:0.3rem">Nøkkelring</h4>
+        <p style="font-size:0.83rem;color:var(--tekst-soft)">1 stk – perlede</p>
+      </div>
+      <div style="text-align:center;padding:1.5rem;background:var(--sand);border-radius:var(--radius)">
+        <img src="bilder/produkter/bokmerker/bokmerke.svg" alt="Bokmerker" style="width:80px;height:80px;object-fit:contain;margin-bottom:0.75rem">
+        <h4 style="margin-bottom:0.3rem">Bokmerker</h4>
+        <p style="font-size:0.83rem;color:var(--tekst-soft)">2 stk – håndtegnet</p>
+      </div>
+    </div>
+    <div style="text-align:center;max-width:400px;margin:0 auto;background:linear-gradient(135deg,var(--hav),var(--hav-deep));border-radius:var(--radius);padding:1.5rem;color:white">
+      <p style="font-size:0.8rem;opacity:0.85;margin-bottom:0.25rem">Bundle-pris</p>
+      <span style="font-family:var(--font-display);font-size:2.5rem;font-weight:600">89 kr</span>
+      <p style="font-size:0.83rem;opacity:0.75;margin-top:0.25rem">96 kr enkeltvis – spar 7 kr</p>
+    </div>
+  </section>
+
+  <!-- VELG TEMA -->
+  <section class="section-sand">
+    <div class="section-header">
+      <p class="section-eyebrow">Fire tema å velge mellom</p>
+      <h2>Velg ditt favorittema</h2>
+      <p>Alle temaer inneholder de samme produkttypene – men med unikt design og fargepalett.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;max-width:900px;margin:0 auto">
+
+      <div class="bundle-tema-kort" style="--tema-gradient:linear-gradient(135deg,#7ab8c8,#4a90a8)">
+        <div class="bundle-tema-toppstripe"></div>
+        <img src="bilder/produkter/bundle/bundle.svg" alt="The Beachside Life bundle">
+        <h3>The Beachside Life</h3>
+        <p>Klassisk strand-stemning med skjell og bølger.</p>
+        <a href="bestill.html" class="btn-bundle" style="display:block;text-align:center">Bestill bundle</a>
+      </div>
+
+      <div class="bundle-tema-kort" style="--tema-gradient:linear-gradient(135deg,#a8d4c0,#3a9878)">
+        <div class="bundle-tema-toppstripe"></div>
+        <img src="bilder/produkter/bundle/bundle.svg" alt="Mermaid Mist bundle">
+        <h3>Mermaid Mist</h3>
+        <p>Drømmende mint-toner og et snev av magi.</p>
+        <a href="bestill.html" class="btn-bundle" style="display:block;text-align:center">Bestill bundle</a>
+      </div>
+
+      <div class="bundle-tema-kort" style="--tema-gradient:linear-gradient(135deg,#f2b49a,#d4784a)">
+        <div class="bundle-tema-toppstripe"></div>
+        <img src="bilder/produkter/bundle/bundle.svg" alt="Sunset Silk bundle">
+        <h3>Sunset Silk</h3>
+        <p>Varm korall og gull – som solnedgang over havet.</p>
+        <a href="bestill.html" class="btn-bundle" style="display:block;text-align:center">Bestill bundle</a>
+      </div>
+
+      <div class="bundle-tema-kort" style="--tema-gradient:linear-gradient(135deg,#b8d870,#5a9030)">
+        <div class="bundle-tema-toppstripe"></div>
+        <img src="bilder/produkter/bundle/bundle.svg" alt="Tropical Treasure bundle">
+        <h3>Tropical Treasure</h3>
+        <p>Frodige tropiske farger med liv og energi.</p>
+        <a href="bestill.html" class="btn-bundle" style="display:block;text-align:center">Bestill bundle</a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="wave-divider" style="background:var(--sand)">
+    <svg viewBox="0 0 1200 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="30">
+      <path d="M0,0 C400,40 800,0 1200,30 L1200,40 L0,40 Z" fill="var(--tekst)"/>
+    </svg>
+  </div>
+
+  <footer>
+    <p class="footer-logo">Beachside Stories</p>
+    <p>Spørsmål? Send meg en melding på <a href="mailto:DIN@EPOST.NO">DIN@EPOST.NO</a></p>
+    <p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.5">© 2025 Beachside Stories</p>
+  </footer>
+
+  <style>
+    .bundle-tema-kort {
+      background: var(--hvit);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-bottom: 1.5rem;
+    }
+    .bundle-tema-kort .bundle-tema-toppstripe {
+      height: 8px;
+      background: var(--tema-gradient);
+    }
+    .bundle-tema-kort img {
+      width: 100%;
+      max-width: 160px;
+      aspect-ratio: 1;
+      object-fit: contain;
+      margin: 1rem auto 0.5rem;
+      display: block;
+    }
+    .bundle-tema-kort h3 {
+      font-size: 1.05rem;
+      text-align: center;
+      padding: 0 1.25rem;
+    }
+    .bundle-tema-kort p {
+      font-size: 0.85rem;
+      color: var(--tekst-soft);
+      text-align: center;
+      padding: 0 1.25rem;
+      flex: 1;
+    }
+    .bundle-tema-kort .btn-bundle {
+      margin: 0.5rem 1.25rem 0;
+    }
+  </style>
+
+  <script src="nav.js"></script>
+</body>
+</html>

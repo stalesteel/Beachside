@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personlig tilpasning – Beachside Stories</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Beachside Stories</span>
+    <button class="nav-toggle" aria-label="Åpne meny" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Hjem</a></li>
+      <li><a href="produkter.html">Produkter</a></li>
+      <li><a href="bundle.html">Bundle</a></li>
+      <li><a href="bestill.html">Bestill</a></li>
+      <li><a href="request.html" class="active">Personlig tilpasning</a></li>
+    </ul>
+  </nav>
+
+  <section style="padding:3rem clamp(1rem,5vw,3rem) 2rem;background:linear-gradient(135deg,var(--mint-soft),var(--sand));text-align:center">
+    <p class="section-eyebrow">Lag noe unikt</p>
+    <h1 style="font-size:clamp(1.8rem,5vw,3rem);margin-bottom:0.5rem">Personlig tilpasning</h1>
+    <p style="color:var(--tekst-soft);max-width:480px;margin:0 auto">
+      Ønsker du noe som er helt ditt eget? Vi kan tilpasse notatbøker og nøkkelringer
+      etter dine ønsker – velg farger, motiv, navn eller tekst.
+    </p>
+  </section>
+
+  <section class="section-white">
+    <div style="max-width:800px;margin:0 auto">
+
+      <!-- Hva kan tilpasses -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem">
+
+        <div style="background:var(--sand);border-radius:var(--radius);padding:2rem">
+          <div style="font-size:2.5rem;margin-bottom:1rem">📒</div>
+          <h3 style="margin-bottom:0.75rem">Notatbok</h3>
+          <p style="color:var(--tekst-soft);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">
+            Få notatboken håndmalt med akkurat det motivet du ønsker.
+          </p>
+          <ul style="padding-left:1.2rem;color:var(--tekst-soft);font-size:0.9rem;display:flex;flex-direction:column;gap:0.4rem">
+            <li>Eget motiv eller tema</li>
+            <li>Navn eller tekst på omslaget</li>
+            <li>Egne farger</li>
+            <li>Spesiell anledning (bursdag, gave osv.)</li>
+          </ul>
+        </div>
+
+        <div style="background:var(--sand);border-radius:var(--radius);padding:2rem">
+          <div style="font-size:2.5rem;margin-bottom:1rem">🔑</div>
+          <h3 style="margin-bottom:0.75rem">Nøkkelring</h3>
+          <p style="color:var(--tekst-soft);font-size:0.9rem;line-height:1.8;margin-bottom:1rem">
+            Sett sammen din egen nøkkelring med perler og bokstaver etter eget ønske.
+          </p>
+          <ul style="padding-left:1.2rem;color:var(--tekst-soft);font-size:0.9rem;display:flex;flex-direction:column;gap:0.4rem">
+            <li>Bokstaver – navn, ord eller initialer</li>
+            <li>Valgfrie fargekombinasjoner</li>
+            <li>Spesielt mønster eller tema</li>
+            <li>Egendefinert lengde</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Slik fungerer det -->
+      <div style="background:linear-gradient(135deg,var(--mint-soft),var(--sand));border-radius:var(--radius);padding:2rem;margin-bottom:2rem">
+        <h3 style="margin-bottom:1.25rem;font-size:1.1rem">Slik fungerer det</h3>
+        <ol style="padding-left:1.2rem;display:flex;flex-direction:column;gap:0.6rem;color:var(--tekst-soft);font-size:0.9rem">
+          <li>Gå til bestillingsskjemaet og fyll ut ønsket produkt og antall</li>
+          <li>Skriv inn ønskene dine i feltet «Personlig tilpasning» nederst i skjemaet</li>
+          <li>Vi tar kontakt på e-post for å avklare detaljer og pris</li>
+          <li>Du betaler via Vipps når vi er enige – og produktet lages akkurat slik du vil ha det!</li>
+        </ol>
+      </div>
+
+      <!-- Merk -->
+      <p style="font-size:0.85rem;color:var(--tekst-soft);text-align:center;margin-bottom:2rem;opacity:0.8">
+        Personlig tilpasning er kun tilgjengelig for notatbøker og nøkkelringer.
+        Pris avtales individuelt.
+      </p>
+
+      <div style="text-align:center">
+        <a href="bestill.html" class="btn btn-primary">Gå til bestillingsskjema</a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="wave-divider" style="background:var(--hvit)">
+    <svg viewBox="0 0 1200 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="30">
+      <path d="M0,0 C400,40 800,0 1200,30 L1200,40 L0,40 Z" fill="var(--tekst)"/>
+    </svg>
+  </div>
+
+  <footer>
+    <p class="footer-logo">Beachside Stories</p>
+    <p>Spørsmål? Send meg en melding på <a href="mailto:DIN@EPOST.NO">DIN@EPOST.NO</a></p>
+    <p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.5">© 2025 Beachside Stories</p>
+  </footer>
+
+  <style>
+    @media (max-width: 600px) {
+      div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+    }
+  </style>
+
+  <script src="nav.js"></script>
+</body>
+</html>

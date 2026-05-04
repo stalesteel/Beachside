@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <filter id="paper-shadow">
+      <feDropShadow dx="4" dy="5" stdDeviation="6" flood-color="#3a2e2835"/>
+    </filter>
+    <filter id="sketch">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="#e8f4f8"/>
+  <ellipse cx="200" cy="200" rx="155" ry="155" fill="#f0faff" opacity="0.6"/>
+
+  <!-- Bookmark shadow -->
+  <rect x="155" y="48" width="95" height="308" rx="8" fill="#3a2e2825" filter="url(#paper-shadow)"/>
+
+  <!-- Bookmark body -->
+  <rect x="148" y="42" width="104" height="308" rx="6" fill="#fffdf5"/>
+
+  <!-- Top ribbon hole -->
+  <circle cx="200" cy="62" r="7" fill="#e8f4f8"/>
+  <circle cx="200" cy="62" r="7" fill="none" stroke="#c8b890" stroke-width="1.5"/>
+
+  <!-- Ribbon/tassel -->
+  <line x1="198" y1="42" x2="194" y2="20" stroke="#e8896a" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="202" y1="42" x2="206" y2="18" stroke="#7ab8c8" stroke-width="2.5" stroke-linecap="round"/>
+  <ellipse cx="194" cy="16" rx="4" ry="6" fill="#e8896a" opacity="0.9"/>
+  <ellipse cx="206" cy="14" rx="4" ry="6" fill="#7ab8c8" opacity="0.9"/>
+
+  <!-- ===== HAND-DRAWN BEACH SCENE ===== -->
+
+  <!-- SUN (top area) -->
+  <circle cx="200" cy="105" r="18" fill="#f5d070" opacity="0.9"/>
+  <!-- Sun rays (sketchy style) -->
+  <g stroke="#f0c040" stroke-width="2" stroke-linecap="round" opacity="0.8">
+    <line x1="200" y1="80" x2="200" y2="73"/>
+    <line x1="200" y1="130" x2="200" y2="137"/>
+    <line x1="175" y1="105" x2="168" y2="105"/>
+    <line x1="225" y1="105" x2="232" y2="105"/>
+    <line x1="183" y1="88" x2="178" y2="83"/>
+    <line x1="217" y1="88" x2="222" y2="83"/>
+    <line x1="183" y1="122" x2="178" y2="127"/>
+    <line x1="217" y1="122" x2="222" y2="127"/>
+  </g>
+
+  <!-- PALM TREE -->
+  <!-- Trunk -->
+  <path d="M185,195 Q182,175 180,155 Q179,148 183,140"
+        fill="none" stroke="#8a6840" stroke-width="5" stroke-linecap="round"/>
+  <!-- Palm leaves -->
+  <path d="M183,140 Q165,128 155,118" fill="none" stroke="#6aac70" stroke-width="3" stroke-linecap="round"/>
+  <path d="M183,140 Q192,118 196,106" fill="none" stroke="#7ab870" stroke-width="3" stroke-linecap="round"/>
+  <path d="M183,140 Q175,130 160,135" fill="none" stroke="#5a9c60" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M183,140 Q198,132 210,128" fill="none" stroke="#6aac70" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Leaf details -->
+  <path d="M165,126 Q161,123 158,120" fill="none" stroke="#6aac70" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M193,120 Q195,115 196,109" fill="none" stroke="#7ab870" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- OCEAN WAVES -->
+  <!-- Wave 1 -->
+  <path d="M156,210 Q167,204 178,210 Q189,216 200,210 Q211,204 222,210 Q233,216 244,210"
+        fill="none" stroke="#7ab8c8" stroke-width="2.2" stroke-linecap="round" opacity="0.9"/>
+  <!-- Wave 2 -->
+  <path d="M156,222 Q167,216 178,222 Q189,228 200,222 Q211,216 222,222 Q233,228 244,222"
+        fill="none" stroke="#4a90a8" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
+  <!-- Wave 3 (light) -->
+  <path d="M160,234 Q170,228 182,234 Q194,240 206,234 Q218,228 240,234"
+        fill="none" stroke="#7ab8c8" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- SAND area -->
+  <path d="M152,248 Q200,242 248,248 L248,260 Q200,256 152,260 Z" fill="#f5d8a8" opacity="0.6"/>
+
+  <!-- SEASHELL (hand-drawn style) on sand -->
+  <!-- Scallop shell -->
+  <path d="M186,258 C188,248 192,244 196,244 C200,244 204,248 206,258 C204,262 200,264 196,264 C192,264 188,262 186,258 Z"
+        fill="#f4c4a8" stroke="#d4886a" stroke-width="1.2"/>
+  <line x1="196" y1="244" x2="196" y2="264" stroke="#d4886a" stroke-width="0.8" opacity="0.6"/>
+  <line x1="196" y1="244" x2="205" y2="261" stroke="#d4886a" stroke-width="0.8" opacity="0.5"/>
+  <line x1="196" y1="244" x2="187" y2="261" stroke="#d4886a" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Small spiral shell -->
+  <g transform="translate(218,257)">
+    <path d="M0,-9 C6,-9 10,-5 10,0 C10,6 6,10 0,10 C-6,10 -10,6 -10,0 C-10,-5 -6,-9 0,-9 Z"
+          fill="#e8c9a8" stroke="#c8956a" stroke-width="1"/>
+    <path d="M0,-6 C4,-6 7,-3 7,0 C7,4 4,7 0,7 C-4,7 -7,4 -7,0"
+          fill="none" stroke="#c8956a" stroke-width="0.7" opacity="0.7"/>
+    <circle cx="0" cy="0" r="2" fill="#d4a882" opacity="0.8"/>
+  </g>
+
+  <!-- STARFISH -->
+  <g transform="translate(175,270) rotate(15)">
+    <path d="M0,-14 L3,-4 L13,-4 L5,2 L8,12 L0,6 L-8,12 L-5,2 L-13,-4 L-3,-4 Z"
+          fill="#e8a870" stroke="#c8886a" stroke-width="1" opacity="0.85"/>
+    <!-- Texture dots -->
+    <circle cx="0" cy="-8" r="1" fill="#c8886a" opacity="0.5"/>
+    <circle cx="7" cy="0" r="1" fill="#c8886a" opacity="0.5"/>
+    <circle cx="-7" cy="0" r="1" fill="#c8886a" opacity="0.5"/>
+    <circle cx="4" cy="7" r="1" fill="#c8886a" opacity="0.5"/>
+    <circle cx="-4" cy="7" r="1" fill="#c8886a" opacity="0.5"/>
+  </g>
+
+  <!-- Small sand dots -->
+  <circle cx="163" cy="252" r="1.5" fill="#d4b880" opacity="0.6"/>
+  <circle cx="235" cy="254" r="1.5" fill="#d4b880" opacity="0.5"/>
+  <circle cx="170" cy="256" r="1" fill="#d4b880" opacity="0.5"/>
+
+  <!-- Text "Beachside" in small handwritten style -->
+  <text x="200" y="305" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="11" fill="#7ab8c8" opacity="0.8" letter-spacing="2"
+        font-style="italic">beachside</text>
+
+  <!-- Decorative border lines on bookmark -->
+  <rect x="154" y="48" width="92" height="296" rx="4" fill="none" stroke="#e8d8c0" stroke-width="1" opacity="0.6"/>
+
+  <!-- Bottom decorative wave border -->
+  <path d="M158,330 Q170,325 182,330 Q194,335 206,330 Q218,325 230,330 Q238,335 242,330"
+        fill="none" stroke="#a8d4c0" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M160,338 Q172,333 184,338 Q196,343 208,338 Q220,333 240,338"
+        fill="none" stroke="#a8d4c0" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+</svg>

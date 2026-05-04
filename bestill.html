@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bestill – Beachside Stories</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Beachside Stories</span>
+    <button class="nav-toggle" aria-label="Åpne meny" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Hjem</a></li>
+      <li><a href="produkter.html">Produkter</a></li>
+      <li><a href="bundle.html">Bundle</a></li>
+      <li><a href="bestill.html" class="active">Bestill</a></li>
+      <li><a href="request.html">Personlig tilpasning</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section style="padding:3rem clamp(1rem,5vw,3rem) 2rem;background:linear-gradient(135deg,var(--korall-soft),var(--sand));text-align:center">
+    <p class="section-eyebrow">Klar til å bestille?</p>
+    <h1 style="font-size:clamp(1.8rem,5vw,3rem);margin-bottom:0.5rem">Bestill</h1>
+    <p style="color:var(--tekst-soft);max-width:480px;margin:0 auto">
+      Fyll ut skjemaet nedenfor. Vi sender deg en bekreftelse på e-post
+      etterfulgt av et Vipps-krav når bestillingen er klar.
+    </p>
+  </section>
+
+  <!-- SKJEMA -->
+  <section class="section-white">
+    <div style="max-width:700px;margin:0 auto">
+
+      <!-- Betal litt ekstra-påminnelse -->
+      <div style="background:linear-gradient(135deg,#e8f4f8,var(--mint-soft));border-radius:var(--radius);padding:1rem 1.5rem;margin-bottom:2rem;display:flex;gap:0.85rem;align-items:flex-start">
+        <span style="font-size:1.3rem;flex-shrink:0">💙</span>
+        <p style="font-size:0.86rem;color:var(--tekst-soft);margin:0">
+          Hvert produkt lages for hånd med mye kjærlighet. Det er et eget felt i skjemaet
+          hvis du ønsker å legge til et frivillig ekstra beløp – det setter vi stor pris på!
+        </p>
+      </div>
+
+      <!-- Google Forms iframe -->
+      <div style="border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdgdVooyUlX7Qkv-FULk5n6GGV1jH_4PBBbv7XEq2yzyqxOWA/viewform?embedded=true"
+          style="width:100%;height:4000px;border:none;display:block"
+          marginheight="0"
+          marginwidth="0">
+          Laster inn …
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="wave-divider" style="background:var(--hvit)">
+    <svg viewBox="0 0 1200 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="30">
+      <path d="M0,0 C400,40 800,0 1200,30 L1200,40 L0,40 Z" fill="var(--tekst)"/>
+    </svg>
+  </div>
+
+  <footer>
+    <p class="footer-logo">Beachside Stories</p>
+    <p>Spørsmål? Send meg en melding på <a href="mailto:DIN@EPOST.NO">DIN@EPOST.NO</a></p>
+    <p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.5">© 2025 Beachside Stories</p>
+  </footer>
+
+  <script src="nav.js"></script>
+
+</body>
+</html>

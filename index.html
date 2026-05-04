@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beachside Stories</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Beachside Stories</span>
+    <button class="nav-toggle" aria-label="Åpne meny" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Hjem</a></li>
+      <li><a href="produkter.html">Produkter</a></li>
+      <li><a href="bundle.html">Bundle</a></li>
+      <li><a href="request.html">Personlig tilpasning</a></li>
+      <li><a href="bestill.html">Bestill</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow fade-up">Håndlaget med kjærlighet</p>
+      <h1 class="fade-up fade-up-delay-1">
+        Små ting som gjør<br><em>hverdagen penere</em>
+      </h1>
+      <p class="hero-sub fade-up fade-up-delay-2">
+        Notatblokker, nøkkelringer og bokmerker – designet og laget for hånd.
+        Perfekt som gave eller til deg selv.
+      </p>
+      <div class="fade-up fade-up-delay-3" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="produkter.html" class="btn btn-primary">Se produkter</a>
+        <a href="bundle.html" class="btn btn-secondary">Bundle-tilbud</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BØLGEDELER -->
+  <div class="wave-divider" style="background:var(--sand)">
+    <svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="40">
+      <path d="M0,30 C300,60 900,0 1200,30 L1200,60 L0,60 Z" fill="#fffdf9"/>
+    </svg>
+  </div>
+
+  <!-- TEMAOVERSIKT -->
+  <section class="section-white">
+    <div class="section-header">
+      <p class="section-eyebrow">Fire unike tema</p>
+      <h2>Produktene</h2>
+      <p>Hvert tema inneholder notatbok, nøkkelring, bokmerker og et bundle-sett. Alle laget for hånd.</p>
+    </div>
+
+    <div class="produktgrid">
+
+      <div class="produktkort fade-up">
+        <div class="produktkort-bilde" style="background:linear-gradient(135deg,#7ab8c8,#4a90a8);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:var(--font-display);font-size:1rem;color:white;text-align:center;padding:1rem;line-height:1.4">The Beachside<br><em>Life</em></span>
+        </div>
+        <div class="produktkort-innhold">
+          <h3>The Beachside Life</h3>
+          <p class="produktkort-beskrivelse">Klassisk strand-stemning med skjell og bølger.</p>
+          <div class="produktkort-bunn">
+            <span class="pris" style="font-size:0.9rem">fra 9 kr</span>
+            <a href="produkter.html#beachside-life" class="btn btn-secondary" style="font-size:0.8rem;padding:0.5rem 1rem">Se tema</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="produktkort fade-up fade-up-delay-1">
+        <div class="produktkort-bilde" style="background:linear-gradient(135deg,#a8d4c0,#3a9878);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:var(--font-display);font-size:1rem;color:white;text-align:center;padding:1rem;line-height:1.4">Mermaid<br><em>Mist</em></span>
+        </div>
+        <div class="produktkort-innhold">
+          <h3>Mermaid Mist</h3>
+          <p class="produktkort-beskrivelse">Drømmende mint-toner og et snev av magi.</p>
+          <div class="produktkort-bunn">
+            <span class="pris" style="font-size:0.9rem">fra 9 kr</span>
+            <a href="produkter.html#mermaid-mist" class="btn btn-secondary" style="font-size:0.8rem;padding:0.5rem 1rem">Se tema</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="produktkort fade-up fade-up-delay-2">
+        <div class="produktkort-bilde" style="background:linear-gradient(135deg,#f2b49a,#d4784a);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:var(--font-display);font-size:1rem;color:white;text-align:center;padding:1rem;line-height:1.4">Sunset<br><em>Silk</em></span>
+        </div>
+        <div class="produktkort-innhold">
+          <h3>Sunset Silk</h3>
+          <p class="produktkort-beskrivelse">Varm korall og gull – som solnedgang over havet.</p>
+          <div class="produktkort-bunn">
+            <span class="pris" style="font-size:0.9rem">fra 9 kr</span>
+            <a href="produkter.html#sunset-silk" class="btn btn-secondary" style="font-size:0.8rem;padding:0.5rem 1rem">Se tema</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="produktkort fade-up fade-up-delay-2">
+        <div class="produktkort-bilde" style="background:linear-gradient(135deg,#b8d870,#5a9030);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:var(--font-display);font-size:1rem;color:white;text-align:center;padding:1rem;line-height:1.4">Tropical<br><em>Treasure</em></span>
+        </div>
+        <div class="produktkort-innhold">
+          <h3>Tropical Treasure</h3>
+          <p class="produktkort-beskrivelse">Frodige tropiske farger med liv og energi.</p>
+          <div class="produktkort-bunn">
+            <span class="pris" style="font-size:0.9rem">fra 9 kr</span>
+            <a href="produkter.html#tropical-treasure" class="btn btn-secondary" style="font-size:0.8rem;padding:0.5rem 1rem">Se tema</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BUNDLE TEASER -->
+  <section class="section-sand">
+    <div class="section-header">
+      <p class="section-eyebrow">Beste verdi</p>
+      <h2>Bundle-pakken</h2>
+      <p>Få alt sammen til en bedre pris.</p>
+    </div>
+
+    <div class="bundle-kort fade-up">
+      <img src="bilder/produkter/bundle/bundle.svg" alt="The Beachside Bundle" style="width:100%;max-width:320px;display:block;margin:0 auto 1.5rem;border-radius:var(--radius)">
+      <div class="bundle-tag">Populært valg</div>
+      <h3>The Beachside Bundle</h3>
+      <p style="opacity:0.85;margin-bottom:0.5rem">Alt du trenger for å gjøre hverdagen litt penere.</p>
+      <ul class="bundle-innhold">
+        <li>1 × Dekorert notatblokk</li>
+        <li>1 × Perlet nøkkelring</li>
+        <li>2 × Bokmerker</li>
+      </ul>
+      <div class="bundle-bunn">
+        <div>
+          <span class="bundle-pris">89 kr</span>
+          <span class="bundle-spar">96 kr enkeltvis</span>
+        </div>
+        <a href="bundle.html" class="btn-bundle">Se bundle</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONLIG TILPASNING TEASER -->
+  <section class="section-white">
+    <div class="section-header">
+      <p class="section-eyebrow">Noe helt unikt?</p>
+      <h2>Personlig tilpasning</h2>
+      <p>Vi tilpasser notatbøker og nøkkelringer etter dine ønsker – farger, motiv, navn eller tekst.</p>
+    </div>
+    <div style="text-align:center">
+      <a href="request.html" class="btn btn-request">Les mer om personlig tilpasning ✦</a>
+    </div>
+  </section>
+
+  <!-- BØLGEDELER -->
+  <div class="wave-divider" style="background:var(--hvit)">
+    <svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="40">
+      <path d="M0,0 C400,60 800,0 1200,40 L1200,60 L0,60 Z" fill="var(--tekst)"/>
+    </svg>
+  </div>
+
+  <footer>
+    <p class="footer-logo">Beachside Stories</p>
+    <p>Spørsmål? Send meg en melding på <a href="mailto:DIN@EPOST.NO">DIN@EPOST.NO</a></p>
+    <p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.5">© 2025 Beachside Stories</p>
+  </footer>
+
+  <script src="nav.js"></script>
+</body>
+</html>

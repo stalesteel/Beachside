@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="3" dy="4" stdDeviation="5" flood-color="#3a2e2840"/>
+    </filter>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="#e8f4f8"/>
+
+  <!-- Soft background glow -->
+  <ellipse cx="200" cy="200" rx="160" ry="160" fill="#f0faff" opacity="0.6"/>
+
+  <!-- Notebook shadow -->
+  <rect x="118" y="83" width="175" height="230" rx="6" fill="#3a2e2820" filter="url(#shadow)"/>
+
+  <!-- Spiral binding coils -->
+  <g fill="none" stroke="#9ab0b8" stroke-width="2.5" stroke-linecap="round">
+    <ellipse cx="126" cy="108" rx="10" ry="7"/>
+    <ellipse cx="126" cy="128" rx="10" ry="7"/>
+    <ellipse cx="126" cy="148" rx="10" ry="7"/>
+    <ellipse cx="126" cy="168" rx="10" ry="7"/>
+    <ellipse cx="126" cy="188" rx="10" ry="7"/>
+    <ellipse cx="126" cy="208" rx="10" ry="7"/>
+    <ellipse cx="126" cy="228" rx="10" ry="7"/>
+    <ellipse cx="126" cy="248" rx="10" ry="7"/>
+    <ellipse cx="126" cy="268" rx="10" ry="7"/>
+    <ellipse cx="126" cy="288" rx="10" ry="7"/>
+    <!-- Binding spine -->
+    <line x1="126" y1="98" x2="126" y2="300" stroke="#b8cdd5" stroke-width="4"/>
+  </g>
+
+  <!-- Notebook cover -->
+  <rect x="130" y="78" width="160" height="224" rx="5" fill="#fdf6ee"/>
+
+  <!-- Cover border stripe -->
+  <rect x="130" y="78" width="160" height="8" rx="5" fill="#e8896a"/>
+  <rect x="130" y="86" width="160" height="4" fill="#e8896a"/>
+
+  <!-- Cover texture lines (subtle) -->
+  <line x1="134" y1="160" x2="286" y2="160" stroke="#f0e8de" stroke-width="1"/>
+  <line x1="134" y1="180" x2="286" y2="180" stroke="#f0e8de" stroke-width="1"/>
+  <line x1="134" y1="200" x2="286" y2="200" stroke="#f0e8de" stroke-width="1"/>
+  <line x1="134" y1="220" x2="286" y2="220" stroke="#f0e8de" stroke-width="1"/>
+  <line x1="134" y1="240" x2="286" y2="240" stroke="#f0e8de" stroke-width="1"/>
+  <line x1="134" y1="260" x2="286" y2="260" stroke="#f0e8de" stroke-width="1"/>
+  <line x1="134" y1="280" x2="286" y2="280" stroke="#f0e8de" stroke-width="1"/>
+
+  <!-- SHELL 1: Spiral shell (main, center) -->
+  <g transform="translate(208,155)">
+    <!-- Outer shell body -->
+    <path d="M0,-38 C22,-38 40,-20 40,0 C40,22 22,40 0,40 C-22,40 -40,22 -40,0 C-40,-20 -22,-38 0,-38 Z"
+          fill="#e8c9a8" stroke="#c8956a" stroke-width="1.5" opacity="0.9"/>
+    <!-- Shell spiral lines -->
+    <path d="M0,-30 C16,-30 30,-16 30,0 C30,16 16,30 0,30 C-16,30 -30,16 -30,0"
+          fill="none" stroke="#c8956a" stroke-width="1.2" opacity="0.7"/>
+    <path d="M0,-20 C12,-20 20,-12 20,0 C20,12 12,20 0,20 C-12,20 -20,12 -20,0"
+          fill="none" stroke="#c8956a" stroke-width="1" opacity="0.6"/>
+    <path d="M0,-10 C6,-10 10,-6 10,0 C10,6 6,10 0,10"
+          fill="none" stroke="#c8956a" stroke-width="1" opacity="0.5"/>
+    <circle cx="0" cy="0" r="4" fill="#d4a882" opacity="0.8"/>
+    <!-- Shell tip -->
+    <path d="M0,-38 C-5,-50 -2,-58 0,-60 C2,-58 5,-50 0,-38" fill="#d4a882" stroke="#c8956a" stroke-width="1"/>
+  </g>
+
+  <!-- SHELL 2: Scallop shell (bottom left area) -->
+  <g transform="translate(158,228)">
+    <path d="M0,-28 C5,-28 28,0 28,8 C28,18 15,24 0,24 C-15,24 -28,18 -28,8 C-28,0 -5,-28 0,-28 Z"
+          fill="#f4c4a8" stroke="#e8896a" stroke-width="1.2" opacity="0.85"/>
+    <!-- Fan ridges -->
+    <line x1="0" y1="-28" x2="0" y2="24" stroke="#e8896a" stroke-width="0.8" opacity="0.5"/>
+    <line x1="0" y1="-28" x2="20" y2="18" stroke="#e8896a" stroke-width="0.8" opacity="0.5"/>
+    <line x1="0" y1="-28" x2="-20" y2="18" stroke="#e8896a" stroke-width="0.8" opacity="0.5"/>
+    <line x1="0" y1="-28" x2="27" y2="4" stroke="#e8896a" stroke-width="0.8" opacity="0.4"/>
+    <line x1="0" y1="-28" x2="-27" y2="4" stroke="#e8896a" stroke-width="0.8" opacity="0.4"/>
+    <line x1="0" y1="-28" x2="13" y2="-14" stroke="#e8896a" stroke-width="0.8" opacity="0.4"/>
+    <line x1="0" y1="-28" x2="-13" y2="-14" stroke="#e8896a" stroke-width="0.8" opacity="0.4"/>
+  </g>
+
+  <!-- SHELL 3: Small cowrie shell (top right) -->
+  <g transform="translate(255,108) rotate(-20)">
+    <ellipse cx="0" cy="0" rx="14" ry="10" fill="#f0dcc8" stroke="#c8a882" stroke-width="1.2" opacity="0.9"/>
+    <path d="M-10,0 C-6,4 6,4 10,0" fill="none" stroke="#c8a882" stroke-width="1.5" opacity="0.7"/>
+    <line x1="-8" y1="-1" x2="-8" y2="1" stroke="#c8a882" stroke-width="0.8" opacity="0.5"/>
+    <line x1="-5" y1="-2" x2="-5" y2="2" stroke="#c8a882" stroke-width="0.8" opacity="0.5"/>
+    <line x1="-2" y1="-2" x2="-2" y2="2" stroke="#c8a882" stroke-width="0.8" opacity="0.5"/>
+    <line x1="2" y1="-2" x2="2" y2="2" stroke="#c8a882" stroke-width="0.8" opacity="0.5"/>
+    <line x1="5" y1="-2" x2="5" y2="2" stroke="#c8a882" stroke-width="0.8" opacity="0.5"/>
+    <line x1="8" y1="-1" x2="8" y2="1" stroke="#c8a882" stroke-width="0.8" opacity="0.5"/>
+  </g>
+
+  <!-- Small dot details (sand) -->
+  <circle cx="170" cy="120" r="2" fill="#d4a882" opacity="0.5"/>
+  <circle cx="175" cy="115" r="1.5" fill="#d4a882" opacity="0.4"/>
+  <circle cx="255" cy="240" r="2.5" fill="#d4a882" opacity="0.4"/>
+  <circle cx="262" cy="248" r="1.5" fill="#d4a882" opacity="0.3"/>
+
+  <!-- Small wave at bottom of cover -->
+  <path d="M138,276 Q155,270 172,276 Q189,282 206,276 Q223,270 240,276 Q257,282 278,276"
+        fill="none" stroke="#7ab8c8" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+  <path d="M138,284 Q155,278 172,284 Q189,290 206,284 Q223,278 240,284 Q257,290 278,284"
+        fill="none" stroke="#7ab8c8" stroke-width="1.5" opacity="0.35" stroke-linecap="round"/>
+
+  <!-- Cover edge/page lines visible on right -->
+  <rect x="287" y="82" width="3" height="216" rx="1" fill="#e8ddd0"/>
+  <rect x="291" y="85" width="2" height="210" rx="1" fill="#efe6da"/>
+</svg>

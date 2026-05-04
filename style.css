@@ -1,0 +1,595 @@
+/* ═══════════════════════════════════════
+   BEACHSIDE STORIES — Global Stylesheet
+   ═══════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  /* Farger */
+  --sand:        #f5efe6;
+  --sand-dark:   #e8ddd0;
+  --hav:         #7ab8c8;
+  --hav-deep:    #4a90a8;
+  --korall:      #e8896a;
+  --korall-soft: #f2b49a;
+  --mint:        #a8d4c0;
+  --mint-soft:   #d4ede4;
+  --tekst:       #3a2e28;
+  --tekst-soft:  #7a6e68;
+  --hvit:        #fffdf9;
+
+  /* Typografi */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  /* Størrelser */
+  --radius:      16px;
+  --radius-sm:   8px;
+  --shadow:      0 4px 24px rgba(74, 144, 168, 0.12);
+  --shadow-hover:0 8px 40px rgba(74, 144, 168, 0.22);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--sand);
+  color: var(--tekst);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── Tekstiler ── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+}
+
+a {
+  color: var(--hav-deep);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover { color: var(--korall); }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Navigasjon ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 253, 249, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sand-dark);
+  padding: 0 clamp(1rem, 5vw, 3rem);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--hav-deep);
+  letter-spacing: 0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--tekst-soft);
+  transition: color 0.2s;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--hav-deep); }
+
+/* ── Hamburger-knapp (skjult på desktop) ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s;
+}
+.nav-toggle:hover { background: var(--sand-dark); }
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--tekst);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+/* X-animasjon når menyen er åpen */
+nav.nav-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+nav.nav-open .nav-toggle span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobil nav ── */
+@media (max-width: 768px) {
+  nav { position: relative; }
+
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(255, 253, 249, 0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--sand-dark);
+    box-shadow: 0 8px 24px rgba(58, 46, 40, 0.1);
+    padding: 0.5rem 0 1rem;
+    z-index: 99;
+  }
+  .nav-links.nav-open { display: flex; }
+
+  .nav-links li { width: 100%; }
+
+  .nav-links a {
+    display: block;
+    padding: 0.85rem clamp(1rem, 5vw, 3rem);
+    font-size: 1rem;
+    border-bottom: 1px solid var(--sand-dark);
+  }
+  .nav-links li:last-child a { border-bottom: none; }
+}
+
+/* ── Hero-seksjon ── */
+.hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 3rem);
+  position: relative;
+  overflow: hidden;
+  background-image: url('bilder/hero.webp');
+  background-size: cover;
+  background-position: center right;
+  background-color: var(--sand);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(245,239,230,0.72) 0%,
+    rgba(245,239,230,0.55) 50%,
+    rgba(245,239,230,0.25) 100%
+  );
+  z-index: 0;
+}
+
+/* Bølge-dekor */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0; right: 0;
+  height: 60px;
+  background: var(--hvit);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+.hero-content { position: relative; z-index: 1; max-width: 600px; }
+
+.hero-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--hav-deep);
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  color: var(--tekst);
+  margin-bottom: 1rem;
+}
+
+.hero h1 em {
+  color: var(--korall);
+  font-style: italic;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--tekst-soft);
+  max-width: 440px;
+  margin: 0 auto 2rem;
+}
+
+/* ── Knapper ── */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.8rem;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--korall);
+  color: white;
+  box-shadow: 0 4px 16px rgba(232,137,106,0.35);
+}
+.btn-primary:hover {
+  background: #d4704e;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(232,137,106,0.45);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--hav-deep);
+  border: 1.5px solid var(--hav);
+}
+.btn-secondary:hover {
+  background: var(--hav-deep);
+  color: white;
+  border-color: var(--hav-deep);
+  transform: translateY(-2px);
+}
+
+.btn-request {
+  background: var(--mint);
+  color: var(--tekst);
+}
+.btn-request:hover {
+  background: var(--mint-soft);
+  transform: translateY(-2px);
+}
+
+/* ── Seksjoner ── */
+section {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 5vw, 3rem);
+}
+
+.section-white { background: var(--hvit); }
+.section-mint  { background: var(--mint-soft); }
+.section-sand  { background: var(--sand); }
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  color: var(--tekst-soft);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--hav-deep);
+  opacity: 0.7;
+  margin-bottom: 0.4rem;
+}
+
+/* ── Produktkort ── */
+.produktgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.produktkort {
+  background: var(--hvit);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.produktkort:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.produktkort-bilde {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 0;
+  background: var(--sand-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tekst-soft);
+  font-size: 0.85rem;
+}
+
+.produktkort-bilde-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--sand-dark), var(--mint-soft));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tekst-soft);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.produktkort-innhold {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.produktkort h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.produktkort-beskrivelse {
+  font-size: 0.9rem;
+  color: var(--tekst-soft);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.produktkort-bunn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.pris {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--hav-deep);
+  font-weight: 600;
+}
+
+/* ── Bundle-kort ── */
+.bundle-kort {
+  background: linear-gradient(135deg, var(--hav-deep), var(--hav));
+  color: white;
+  border-radius: var(--radius);
+  padding: 2rem 2.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-hover);
+  position: relative;
+  overflow: hidden;
+}
+
+.bundle-kort::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+}
+
+.bundle-tag {
+  display: inline-block;
+  background: var(--korall);
+  color: white;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.bundle-kort h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.bundle-innhold {
+  list-style: none;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.bundle-innhold li {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bundle-innhold li::before { content: '✦'; font-size: 0.6rem; opacity: 0.7; }
+
+.bundle-bunn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.bundle-pris { font-family: var(--font-display); font-size: 1.8rem; }
+.bundle-spar {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  text-decoration: line-through;
+  margin-left: 0.5rem;
+}
+
+.btn-bundle {
+  background: white;
+  color: var(--hav-deep);
+  padding: 0.7rem 1.6rem;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.btn-bundle:hover {
+  background: var(--korall);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ── Request-seksjon ── */
+.request-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.request-kort {
+  background: var(--hvit);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--mint);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.request-kort:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.request-ikon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.request-kort h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.request-kort p {
+  font-size: 0.9rem;
+  color: var(--tekst-soft);
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+
+.request-eksempler {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.request-eksempler li {
+  font-size: 0.85rem;
+  color: var(--tekst-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.request-eksempler li::before {
+  content: '→';
+  color: var(--mint);
+  font-size: 0.8rem;
+}
+
+/* ── Footer ── */
+footer {
+  background: var(--tekst);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 2.5rem clamp(1rem, 5vw, 3rem);
+  font-size: 0.85rem;
+}
+
+footer .footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+footer a { color: var(--korall-soft); }
+footer a:hover { color: var(--korall); }
+
+/* ── Dekorative bølger ── */
+.wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.wave-divider svg { display: block; }
+
+/* ── Responsiv ── */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .bundle-bunn { flex-direction: column; align-items: flex-start; }
+  .produktgrid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+}
+
+@media (max-width: 400px) {
+  .produktgrid { grid-template-columns: 1fr; }
+}
+
+/* ── Fade-in animasjon ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.fade-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
+.fade-up-delay-2 { animation-delay: 0.2s; opacity: 0; }
+.fade-up-delay-3 { animation-delay: 0.3s; opacity: 0; }
+.fade-up-delay-4 { animation-delay: 0.4s; opacity: 0; }

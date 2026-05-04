@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bg-grad" cx="50%" cy="40%">
+      <stop offset="0%" stop-color="#e8f8f0"/>
+      <stop offset="100%" stop-color="#d0ecf4"/>
+    </radialGradient>
+    <radialGradient id="bead-b" cx="35%" cy="30%">
+      <stop offset="0%" stop-color="#a0d0e0"/>
+      <stop offset="100%" stop-color="#4a90a8"/>
+    </radialGradient>
+    <radialGradient id="bead-c" cx="35%" cy="30%">
+      <stop offset="0%" stop-color="#f0a888"/>
+      <stop offset="100%" stop-color="#c86848"/>
+    </radialGradient>
+    <filter id="drop">
+      <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#3a2e2830"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#bg-grad)"/>
+
+  <!-- ===== NOTEBOOK (left, tilted) ===== -->
+  <g transform="translate(108,185) rotate(-12)">
+    <!-- Shadow -->
+    <rect x="5" y="5" width="100" height="130" rx="4" fill="#3a2e2820"/>
+    <!-- Spiral binding -->
+    <line x1="18" y1="-3" x2="18" y2="133" stroke="#9ab0b8" stroke-width="3"/>
+    <ellipse cx="18" cy="8" rx="6" ry="4" fill="none" stroke="#8aa0a8" stroke-width="1.8"/>
+    <ellipse cx="18" cy="22" rx="6" ry="4" fill="none" stroke="#8aa0a8" stroke-width="1.8"/>
+    <ellipse cx="18" cy="36" rx="6" ry="4" fill="none" stroke="#8aa0a8" stroke-width="1.8"/>
+    <ellipse cx="18" cy="50" rx="6" ry="4" fill="none" stroke="#8aa0a8" stroke-width="1.8"/>
+    <ellipse cx="18" cy="64" rx="6" ry="4" fill="none" stroke="#8aa0a8" stroke-width="1.8"/>
+    <ellipse cx="18" cy="78" rx="6" ry="4" fill="none" stroke="#8aa0a8" stroke-width="1.8"/>
+    <ellipse cx="18" cy="92" rx="6" ry="4" fill="none" stroke="#8aa0a8" stroke-width="1.8"/>
+    <ellipse cx="18" cy="106" rx="6" ry="4" fill="none" stroke="#8aa0a8" stroke-width="1.8"/>
+    <ellipse cx="18" cy="120" rx="6" ry="4" fill="none" stroke="#8aa0a8" stroke-width="1.8"/>
+    <!-- Cover -->
+    <rect x="24" y="0" width="76" height="130" rx="3" fill="#fdf6ee"/>
+    <!-- Top stripe -->
+    <rect x="24" y="0" width="76" height="6" rx="3" fill="#e8896a"/>
+    <!-- Shell sketch on cover -->
+    <path d="M62,55 C70,55 76,62 76,68 C76,75 70,80 62,80 C54,80 48,75 48,68 C48,62 54,55 62,55 Z"
+          fill="#e8c9a8" stroke="#c8956a" stroke-width="1" opacity="0.85"/>
+    <path d="M62,60 C68,60 72,64 72,68 C72,73 68,77 62,77 C56,77 52,73 52,68"
+          fill="none" stroke="#c8956a" stroke-width="0.8" opacity="0.6"/>
+    <circle cx="62" cy="68" r="3" fill="#d4a882" opacity="0.7"/>
+    <path d="M62,55 C60,50 61,47 62,46 C63,47 64,50 62,55" fill="#d4a882" stroke="#c8956a" stroke-width="0.8"/>
+    <!-- Small wave lines -->
+    <path d="M30,105 Q41,101 52,105 Q63,109 76,105 Q90,101 96,105"
+          fill="none" stroke="#7ab8c8" stroke-width="1.2" opacity="0.5" stroke-linecap="round"/>
+    <!-- Page edges -->
+    <rect x="98" y="4" width="2" height="124" rx="1" fill="#efe6da"/>
+  </g>
+
+  <!-- ===== KEYRING (right, tilted) ===== -->
+  <g transform="translate(265,100) rotate(10)">
+    <!-- Ring -->
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#b8c0c8" stroke-width="8"/>
+    <path d="M-15,-16 Q0,-21 15,-16" fill="none" stroke="#e0e8f0" stroke-width="2.5" opacity="0.7" stroke-linecap="round"/>
+    <!-- String -->
+    <line x1="0" y1="19" x2="0" y2="185" stroke="#c8a870" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Beads -->
+    <circle cx="0" cy="33" r="9" fill="url(#bead-c)" stroke="#c06848" stroke-width="0.8"/>
+    <circle cx="-2" cy="30" r="2.5" fill="white" opacity="0.35"/>
+    <circle cx="0" cy="53" r="9" fill="#c0e4d4" stroke="#6aa890" stroke-width="0.8"/>
+    <circle cx="-2" cy="50" r="2.5" fill="white" opacity="0.35"/>
+    <!-- B bead -->
+    <circle cx="0" cy="73" r="10" fill="url(#bead-b)" stroke="#3a7898" stroke-width="1"/>
+    <text x="0" y="77" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="white">B</text>
+    <!-- E bead -->
+    <circle cx="0" cy="96" r="10" fill="url(#bead-c)" stroke="#c06848" stroke-width="1"/>
+    <text x="0" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="white">E</text>
+    <!-- A bead -->
+    <circle cx="0" cy="119" r="10" fill="#c0e4d4" stroke="#6aa890" stroke-width="1"/>
+    <text x="0" y="123" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#2a6848">A</text>
+    <!-- C bead -->
+    <circle cx="0" cy="142" r="10" fill="#f8e8d0" stroke="#b49870" stroke-width="1"/>
+    <text x="0" y="146" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#5a4030">C</text>
+    <!-- H bead -->
+    <circle cx="0" cy="165" r="10" fill="url(#bead-b)" stroke="#3a7898" stroke-width="1"/>
+    <text x="0" y="169" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="white">H</text>
+    <!-- End knot -->
+    <circle cx="0" cy="182" r="5" fill="#c8a870" stroke="#a88850" stroke-width="1"/>
+  </g>
+
+  <!-- ===== TWO BOOKMARKS (center-bottom, overlapping) ===== -->
+  <!-- Bookmark 1 (back, tilted left) -->
+  <g transform="translate(172,238) rotate(-6)">
+    <rect x="-28" y="0" width="56" height="148" rx="4" fill="#fff8e8" stroke="#e8d8b8" stroke-width="1" filter="url(#drop)"/>
+    <circle cx="0" cy="14" r="4" fill="#e8f4f8"/>
+    <circle cx="0" cy="14" r="4" fill="none" stroke="#c8b890" stroke-width="1"/>
+    <!-- Mini sun -->
+    <circle cx="0" cy="42" r="10" fill="#f5d070" opacity="0.85"/>
+    <g stroke="#f0c040" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+      <line x1="0" y1="28" x2="0" y2="24"/>
+      <line x1="0" y1="56" x2="0" y2="60"/>
+      <line x1="-14" y1="42" x2="-18" y2="42"/>
+      <line x1="14" y1="42" x2="18" y2="42"/>
+      <line x1="-10" y1="32" x2="-13" y2="29"/>
+      <line x1="10" y1="32" x2="13" y2="29"/>
+    </g>
+    <!-- Mini waves -->
+    <path d="M-22,80 Q-11,76 0,80 Q11,84 22,80" fill="none" stroke="#7ab8c8" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+    <path d="M-22,90 Q-11,86 0,90 Q11,94 22,90" fill="none" stroke="#4a90a8" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+    <!-- Tassel -->
+    <line x1="-3" y1="0" x2="-6" y2="-16" stroke="#e8896a" stroke-width="2" stroke-linecap="round"/>
+    <line x1="3" y1="0" x2="6" y2="-14" stroke="#7ab8c8" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="-6" cy="-19" rx="3" ry="4" fill="#e8896a"/>
+    <ellipse cx="6" cy="-17" rx="3" ry="4" fill="#7ab8c8"/>
+  </g>
+
+  <!-- Bookmark 2 (front, tilted right) -->
+  <g transform="translate(220,242) rotate(8)">
+    <rect x="-28" y="0" width="56" height="148" rx="4" fill="#fffdf5" stroke="#e8d8b8" stroke-width="1" filter="url(#drop)"/>
+    <circle cx="0" cy="14" r="4" fill="#e8f4f8"/>
+    <circle cx="0" cy="14" r="4" fill="none" stroke="#c8b890" stroke-width="1"/>
+    <!-- Scallop shell -->
+    <path d="M0,52 C6,40 10,36 14,38 C16,42 14,52 0,58 C-14,52 -16,42 -14,38 C-10,36 -6,40 0,52 Z"
+          fill="#f4c4a8" stroke="#d4886a" stroke-width="1" opacity="0.9"/>
+    <line x1="0" y1="38" x2="0" y2="58" stroke="#d4886a" stroke-width="0.7" opacity="0.5"/>
+    <line x1="0" y1="38" x2="12" y2="54" stroke="#d4886a" stroke-width="0.7" opacity="0.4"/>
+    <line x1="0" y1="38" x2="-12" y2="54" stroke="#d4886a" stroke-width="0.7" opacity="0.4"/>
+    <!-- Starfish -->
+    <g transform="translate(0,90) rotate(20)">
+      <path d="M0,-12 L2.5,-4 L11,-4 L4.5,1.5 L7,10 L0,5 L-7,10 L-4.5,1.5 L-11,-4 L-2.5,-4 Z"
+            fill="#e8a870" stroke="#c8886a" stroke-width="0.8" opacity="0.85"/>
+    </g>
+    <!-- Mini waves -->
+    <path d="M-22,118 Q-11,114 0,118 Q11,122 22,118" fill="none" stroke="#7ab8c8" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    <!-- Tassel -->
+    <line x1="-3" y1="0" x2="-5" y2="-16" stroke="#a8d4c0" stroke-width="2" stroke-linecap="round"/>
+    <line x1="3" y1="0" x2="5" y2="-14" stroke="#e8896a" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="-5" cy="-19" rx="3" ry="4" fill="#a8d4c0"/>
+    <ellipse cx="5" cy="-17" rx="3" ry="4" fill="#e8896a"/>
+  </g>
+
+  <!-- Label at bottom -->
+  <text x="200" y="390" text-anchor="middle"
+        font-family="Georgia, serif" font-size="12" fill="#4a90a8"
+        opacity="0.7" letter-spacing="3" font-style="italic">the bundle</text>
+</svg>

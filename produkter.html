@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produkter – Beachside Stories</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Beachside Stories</span>
+    <button class="nav-toggle" aria-label="Åpne meny" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Hjem</a></li>
+      <li><a href="produkter.html" class="active">Produkter</a></li>
+      <li><a href="bundle.html">Bundle</a></li>
+      <li><a href="bestill.html">Bestill</a></li>
+      <li><a href="request.html">Personlig tilpasning</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section style="padding:3rem clamp(1rem,5vw,3rem) 2rem;background:linear-gradient(135deg,var(--mint-soft),var(--sand));text-align:center">
+    <p class="section-eyebrow">Håndlaget med kjærlighet</p>
+    <h1 style="font-size:clamp(1.8rem,5vw,3rem);margin-bottom:0.5rem">Produktene</h1>
+    <p style="color:var(--tekst-soft);max-width:480px;margin:0 auto 1.5rem">
+      Alle produkter lages for hånd i fire unike temaer. Hvert tema inneholder
+      notatbok, nøkkelring, bokmerker og et bundle-sett.
+    </p>
+    <!-- Temahopps-lenker -->
+    <div style="display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap">
+      <a href="#beachside-life" class="btn btn-secondary" style="font-size:0.8rem;padding:0.4rem 1rem">The Beachside Life</a>
+      <a href="#mermaid-mist"   class="btn btn-secondary" style="font-size:0.8rem;padding:0.4rem 1rem">Mermaid Mist</a>
+      <a href="#sunset-silk"    class="btn btn-secondary" style="font-size:0.8rem;padding:0.4rem 1rem">Sunset Silk</a>
+      <a href="#tropical-treasure" class="btn btn-secondary" style="font-size:0.8rem;padding:0.4rem 1rem">Tropical Treasure</a>
+    </div>
+  </section>
+
+  <!-- BETAL LITT EKSTRA-banner -->
+  <div style="background:var(--hav-deep);color:white;text-align:center;padding:0.9rem 1.5rem;font-size:0.9rem">
+    💙 Synes du prisene er for lave? Du kan legge til et valgfritt ekstra beløp i bestillingsskjemaet – det settes veldig stor pris på!
+  </div>
+
+  <!-- ════ TEMA 1: THE BEACHSIDE LIFE ════ -->
+  <section id="beachside-life" class="section-white">
+    <div class="tema-header" style="background:linear-gradient(135deg,#7ab8c8,#4a90a8)">
+      <span class="tema-nr">Tema 01</span>
+      <h2>The Beachside Life</h2>
+      <p>Klassisk strand-stemning med skjell og bølger. Det tidløse beach-uttrykket.</p>
+    </div>
+    <div class="tema-produkt-grid">
+      <div class="tema-produkt-kort">
+        <img src="bilder/produkter/notatblokk/notatblokk.svg" alt="Notatbok – The Beachside Life">
+        <h4>Notatbok</h4>
+        <span class="pris">59 kr</span>
+      </div>
+      <div class="tema-produkt-kort">
+        <img src="bilder/produkter/nokkelring/nokkelring.svg" alt="Nøkkelring – The Beachside Life">
+        <h4>Nøkkelring</h4>
+        <span class="pris">19 kr</span>
+      </div>
+      <div class="tema-produkt-kort">
+        <img src="bilder/produkter/bokmerker/bokmerke.svg" alt="Bokmerker – The Beachside Life">
+        <h4>Bokmerker <small style="font-weight:400;font-size:0.8em">(2 stk)</small></h4>
+        <span class="pris">9 kr <small style="font-weight:400;font-size:0.8em">pr stk</small></span>
+      </div>
+      <div class="tema-produkt-kort tema-bundle">
+        <img src="bilder/produkter/bundle/bundle.svg" alt="Bundle – The Beachside Life">
+        <h4>Bundle</h4>
+        <span class="pris">89 kr</span>
+        <small style="color:var(--tekst-soft);font-size:0.78rem">1 notatbok + 1 nøkkelring + 2 bokmerker</small>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:1.5rem">
+      <a href="bestill.html" class="btn btn-primary">Bestill fra dette temaet</a>
+    </div>
+  </section>
+
+  <div class="wave-divider" style="background:var(--hvit)">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" height="30" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,20 C300,40 900,0 1200,20 L1200,40 L0,40 Z" fill="var(--sand)"/>
+    </svg>
+  </div>
+
+  <!-- ════ TEMA 2: MERMAID MIST ════ -->
+  <section id="mermaid-mist" class="section-sand">
+    <div class="tema-header" style="background:linear-gradient(135deg,#a8d4c0,#3a9878)">
+      <span class="tema-nr">Tema 02</span>
+      <h2>Mermaid Mist</h2>
+      <p>Drømmende og mystisk – som havdyp i morgentåken. Kjølige mint-toner og et snev av magi.</p>
+    </div>
+    <div class="tema-produkt-grid">
+      <div class="tema-produkt-kort" style="--tema-bg:#d4ede4">
+        <img src="bilder/produkter/notatblokk/notatblokk.svg" alt="Notatbok – Mermaid Mist">
+        <h4>Notatbok</h4>
+        <span class="pris">59 kr</span>
+      </div>
+      <div class="tema-produkt-kort" style="--tema-bg:#d4ede4">
+        <img src="bilder/produkter/nokkelring/nokkelring.svg" alt="Nøkkelring – Mermaid Mist">
+        <h4>Nøkkelring</h4>
+        <span class="pris">19 kr</span>
+      </div>
+      <div class="tema-produkt-kort" style="--tema-bg:#d4ede4">
+        <img src="bilder/produkter/bokmerker/bokmerke.svg" alt="Bokmerker – Mermaid Mist">
+        <h4>Bokmerker <small style="font-weight:400;font-size:0.8em">(2 stk)</small></h4>
+        <span class="pris">9 kr <small style="font-weight:400;font-size:0.8em">pr stk</small></span>
+      </div>
+      <div class="tema-produkt-kort tema-bundle" style="--tema-bg:#d4ede4">
+        <img src="bilder/produkter/bundle/bundle.svg" alt="Bundle – Mermaid Mist">
+        <h4>Bundle</h4>
+        <span class="pris">89 kr</span>
+        <small style="color:var(--tekst-soft);font-size:0.78rem">1 notatbok + 1 nøkkelring + 2 bokmerker</small>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:1.5rem">
+      <a href="bestill.html" class="btn btn-primary" style="background:#3a9878">Bestill fra dette temaet</a>
+    </div>
+  </section>
+
+  <div class="wave-divider" style="background:var(--sand)">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" height="30" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,10 C400,40 800,0 1200,25 L1200,40 L0,40 Z" fill="var(--hvit)"/>
+    </svg>
+  </div>
+
+  <!-- ════ TEMA 3: SUNSET SILK ════ -->
+  <section id="sunset-silk" class="section-white">
+    <div class="tema-header" style="background:linear-gradient(135deg,#f2b49a,#d4784a)">
+      <span class="tema-nr">Tema 03</span>
+      <h2>Sunset Silk</h2>
+      <p>Varm og silkemyk som en solnedgang over havet. Korall, gull og glødende oransje toner.</p>
+    </div>
+    <div class="tema-produkt-grid">
+      <div class="tema-produkt-kort" style="--tema-bg:#fde8de">
+        <img src="bilder/produkter/notatblokk/notatblokk.svg" alt="Notatbok – Sunset Silk">
+        <h4>Notatbok</h4>
+        <span class="pris">59 kr</span>
+      </div>
+      <div class="tema-produkt-kort" style="--tema-bg:#fde8de">
+        <img src="bilder/produkter/nokkelring/nokkelring.svg" alt="Nøkkelring – Sunset Silk">
+        <h4>Nøkkelring</h4>
+        <span class="pris">19 kr</span>
+      </div>
+      <div class="tema-produkt-kort" style="--tema-bg:#fde8de">
+        <img src="bilder/produkter/bokmerker/bokmerke.svg" alt="Bokmerker – Sunset Silk">
+        <h4>Bokmerker <small style="font-weight:400;font-size:0.8em">(2 stk)</small></h4>
+        <span class="pris">9 kr <small style="font-weight:400;font-size:0.8em">pr stk</small></span>
+      </div>
+      <div class="tema-produkt-kort tema-bundle" style="--tema-bg:#fde8de">
+        <img src="bilder/produkter/bundle/bundle.svg" alt="Bundle – Sunset Silk">
+        <h4>Bundle</h4>
+        <span class="pris">89 kr</span>
+        <small style="color:var(--tekst-soft);font-size:0.78rem">1 notatbok + 1 nøkkelring + 2 bokmerker</small>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:1.5rem">
+      <a href="bestill.html" class="btn btn-primary" style="background:#d4784a">Bestill fra dette temaet</a>
+    </div>
+  </section>
+
+  <div class="wave-divider" style="background:var(--hvit)">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" height="30" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,20 C300,40 900,0 1200,20 L1200,40 L0,40 Z" fill="#eef5e8"/>
+    </svg>
+  </div>
+
+  <!-- ════ TEMA 4: TROPICAL TREASURE ════ -->
+  <section id="tropical-treasure" style="background:#eef5e8;padding:clamp(2rem,6vw,4rem) clamp(1rem,5vw,3rem)">
+    <div class="tema-header" style="background:linear-gradient(135deg,#b8d870,#5a9030)">
+      <span class="tema-nr">Tema 04</span>
+      <h2>Tropical Treasure</h2>
+      <p>Frodige farger fra tropiske strender. Grønt, varmt og fullt av liv og energi.</p>
+    </div>
+    <div class="tema-produkt-grid">
+      <div class="tema-produkt-kort" style="--tema-bg:#daeec8">
+        <img src="bilder/produkter/notatblokk/notatblokk.svg" alt="Notatbok – Tropical Treasure">
+        <h4>Notatbok</h4>
+        <span class="pris">59 kr</span>
+      </div>
+      <div class="tema-produkt-kort" style="--tema-bg:#daeec8">
+        <img src="bilder/produkter/nokkelring/nokkelring.svg" alt="Nøkkelring – Tropical Treasure">
+        <h4>Nøkkelring</h4>
+        <span class="pris">19 kr</span>
+      </div>
+      <div class="tema-produkt-kort" style="--tema-bg:#daeec8">
+        <img src="bilder/produkter/bokmerker/bokmerke.svg" alt="Bokmerker – Tropical Treasure">
+        <h4>Bokmerker <small style="font-weight:400;font-size:0.8em">(2 stk)</small></h4>
+        <span class="pris">9 kr <small style="font-weight:400;font-size:0.8em">pr stk</small></span>
+      </div>
+      <div class="tema-produkt-kort tema-bundle" style="--tema-bg:#daeec8">
+        <img src="bilder/produkter/bundle/bundle.svg" alt="Bundle – Tropical Treasure">
+        <h4>Bundle</h4>
+        <span class="pris">89 kr</span>
+        <small style="color:var(--tekst-soft);font-size:0.78rem">1 notatbok + 1 nøkkelring + 2 bokmerker</small>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:1.5rem">
+      <a href="bestill.html" class="btn btn-primary" style="background:#5a9030">Bestill fra dette temaet</a>
+    </div>
+  </section>
+
+  <!-- PERSONLIG TILPASNING TEASER -->
+  <section class="section-white">
+    <div style="max-width:600px;margin:0 auto;text-align:center;background:var(--mint-soft);border-radius:var(--radius);padding:2.5rem 2rem">
+      <div style="font-size:2rem;margin-bottom:0.75rem">✦</div>
+      <h3 style="margin-bottom:0.75rem">Vil du ha noe helt unikt?</h3>
+      <p style="color:var(--tekst-soft);margin-bottom:1.5rem">
+        Vi kan tilpasse notatbøker og nøkkelringer etter dine ønsker.
+        Velg farger, motiv, navn eller tekst – og vi lager det for deg.
+      </p>
+      <a href="request.html" class="btn btn-request">Les mer om personlig tilpasning ✦</a>
+    </div>
+  </section>
+
+  <div class="wave-divider" style="background:var(--hvit)">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none" height="30" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 C400,40 800,0 1200,30 L1200,40 L0,40 Z" fill="var(--tekst)"/>
+    </svg>
+  </div>
+
+  <footer>
+    <p class="footer-logo">Beachside Stories</p>
+    <p>Spørsmål? Send meg en melding på <a href="mailto:DIN@EPOST.NO">DIN@EPOST.NO</a></p>
+    <p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.5">© 2025 Beachside Stories</p>
+  </footer>
+
+  <style>
+    .tema-header {
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      color: white;
+      margin-bottom: 2rem;
+    }
+    .tema-header .tema-nr {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .tema-header h2 { color: white; margin-bottom: 0.4rem; font-size: clamp(1.4rem,3vw,2rem); }
+    .tema-header p  { opacity: 0.9; font-size: 0.95rem; margin: 0; }
+
+    .tema-produkt-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .tema-produkt-kort {
+      background: var(--tema-bg, var(--sand));
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .tema-produkt-kort img {
+      width: 100%;
+      max-width: 120px;
+      aspect-ratio: 1;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+    }
+    .tema-produkt-kort h4 { font-size: 0.9rem; margin: 0; }
+    .tema-produkt-kort .pris { font-size: 1rem; }
+    .tema-bundle { border: 2px solid rgba(0,0,0,0.08); }
+
+    @media (max-width: 640px) {
+      .tema-produkt-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+
+  <script src="nav.js"></script>
+</body>
+</html>
