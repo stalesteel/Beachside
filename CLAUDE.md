@@ -1,4 +1,4 @@
-# Beachside Stories – Prosjektkontekst for Claude Code
+# Beachside Books – Prosjektkontekst for Claude Code
 
 ## Om nettsiden
 Nettside for salg av håndlagde produkter. Målgruppe: ungdommer og unge voksne.

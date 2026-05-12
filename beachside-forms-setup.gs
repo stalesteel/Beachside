@@ -1,6 +1,6 @@
 function opprettBeachsideSkjema() {
 
-  var f = FormApp.create('Beachside Stories – Bestilling');
+  var f = FormApp.create('Beachside Books – Bestilling');
   f.setDescription(
     'Fyll inn antall der du ønsker noe – la feltet stå blankt for ingen. ' +
     'Du kan bestille fra flere temaer på én gang.'
@@ -23,9 +23,9 @@ function opprettBeachsideSkjema() {
     .setTitle('Velg produkter')
     .setHelpText('Alle temaer på én side – scroll ned for å se alle.');
 
-  tema('The Beachside Life');
+  tema('The Beachbag Bundle');
   tema('Mermaid Mist');
-  tema('Sunset Silk');
+  tema('Sunset Shore');
   tema('Tropical Treasure');
 
   f.addSectionHeaderItem().setTitle('Personlig tilpasning (valgfritt)');
@@ -64,7 +64,7 @@ function opprettBeachsideSkjema() {
   ]);
 
   // ── Koble til Google Sheet + håndteringskolonner ──
-  var ss = SpreadsheetApp.create('Beachside Stories – Ordrer');
+  var ss = SpreadsheetApp.create('Beachside Books – Ordrer');
   f.setDestination(FormApp.DestinationType.SPREADSHEET, ss.getId());
   Utilities.sleep(3000);
 
