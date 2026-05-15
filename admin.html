@@ -317,7 +317,7 @@
         return '<tr>' +
           '<td style="white-space:nowrap;font-size:0.82rem">' + dateStr + '</td>' +
           '<td>' + (o.customer_name || '—') + '</td>' +
-          '<td style="font-size:0.82rem">' + (o.customer_email || '') +
+          '<td style="font-size:0.82rem"><a href="mailto:' + (o.customer_email || '') + '?subject=Ang. bestillingen din hos Beachside Books" style="color:var(--hav-deep)">' + (o.customer_email || '') + '</a>' +
             (o.customer_phone ? '<br><span style="color:var(--tekst-soft)">' + o.customer_phone + '</span>' : '') + '</td>' +
           '<td>' + itemsHtml + '</td>' +
           '<td style="white-space:nowrap;font-weight:600">' + o.total_price + ' kr</td>' +

@@ -131,6 +131,31 @@
     var SUPA_URL = 'https://baafyabpancqfkeouizr.supabase.co';
     var SUPA_KEY = 'sb_publishable_mjk8_t0W467JI4ZWQDjJOA_cmv_XTHT';
 
+    var EJS_SERVICE  = 'service_h9tq8b9';
+    var EJS_TPL_KUNDE = 'template_cncimlj';
+    var EJS_TPL_ADMIN = 'template_br19wa8';
+    var EJS_PUBKEY   = 'T6nuUs6JGdDJu9AtD';
+    var ADMIN_EMAIL  = 'oliviaklommestein@gmail.com';
+
+    function formatItems(items) {
+      return items.map(function (i) {
+        return i.qty + '× ' + i.name + ' — ' + (i.price * i.qty) + ' kr';
+      }).join('\n');
+    }
+
+    async function sendEmail(templateId, params) {
+      await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service_id:      EJS_SERVICE,
+          template_id:     templateId,
+          user_id:         EJS_PUBKEY,
+          template_params: params
+        })
+      });
+    }
+
     function renderCart() {
       var items = Cart.getItems();
       var container = document.getElementById('cart-items');
@@ -208,6 +233,21 @@
         });
 
         if (!res.ok) { throw new Error(await res.text()); }
+
+        var orderItems = formatItems(items);
+        var emailParams = {
+          customer_name:  payload.customer_name,
+          customer_email: payload.customer_email,
+          customer_phone: payload.customer_phone || '—',
+          order_items:    orderItems,
+          total_price:    total,
+          comment:        payload.comment || '(ingen kommentar)'
+        };
+
+        await Promise.all([
+          sendEmail(EJS_TPL_KUNDE, Object.assign({ to_email: payload.customer_email }, emailParams)),
+          sendEmail(EJS_TPL_ADMIN, Object.assign({ to_email: ADMIN_EMAIL },            emailParams))
+        ]);
 
         document.getElementById('success-total').textContent = total;
         document.getElementById('order-form-wrapper').style.display = 'none';
