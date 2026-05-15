@@ -318,11 +318,11 @@
           '<td style="white-space:nowrap;font-size:0.82rem">' + dateStr + '</td>' +
           '<td>' + (o.customer_name || '—') + '</td>' +
           '<td style="font-size:0.82rem">' + (o.customer_email || '') +
-            (o.phone ? '<br><span style="color:var(--tekst-soft)">' + o.phone + '</span>' : '') + '</td>' +
+            (o.customer_phone ? '<br><span style="color:var(--tekst-soft)">' + o.customer_phone + '</span>' : '') + '</td>' +
           '<td>' + itemsHtml + '</td>' +
-          '<td style="white-space:nowrap;font-weight:600">' + o.total + ' kr</td>' +
+          '<td style="white-space:nowrap;font-weight:600">' + o.total_price + ' kr</td>' +
           '<td><span class="status-badge s-' + status + '">' + status + '</span><br>' + actionHtml + '</td>' +
-          '<td style="font-size:0.82rem;color:var(--tekst-soft);max-width:160px">' + (o.special_request || '') + '</td>' +
+          '<td style="font-size:0.82rem;color:var(--tekst-soft);max-width:160px">' + (o.comment || '') + '</td>' +
           '</tr>';
       }).join('');
     }
