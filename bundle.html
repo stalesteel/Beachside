@@ -10,16 +10,22 @@
 
   <nav>
     <a href="index.html"><img src="bilder/logo.webp" alt="Beachside Books" class="nav-logo-img"></a>
-    <button class="nav-toggle" aria-label="Åpne meny" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="index.html">Hjem</a></li>
-      <li><a href="produkter.html">Produkter</a></li>
-      <li><a href="bundle.html" class="active">Bundle</a></li>
-      <li><a href="bestill.html">Bestill</a></li>
-      <li><a href="request.html">Personlig tilpasning</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html">Hjem</a></li>
+        <li><a href="produkter.html">Produkter</a></li>
+        <li><a href="bundle.html" class="active">Bundle</a></li>
+        <li><a href="bestill.html">Bestill</a></li>
+        <li><a href="request.html">Personlig tilpasning</a></li>
+      </ul>
+      <a href="checkout.html" class="nav-cart" aria-label="Handlekurv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="nav-cart-badge">0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Åpne meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -77,7 +83,7 @@
         <img src="bilder/produkter/bundle/bundle.svg" alt="The Beachbag Bundle bundle">
         <h3>The Beachbag Bundle</h3>
         <p>Klassisk strand-stemning med skjell og bølger.</p>
-        <a href="bestill.html" class="btn-bundle" style="display:block;text-align:center">Bestill bundle</a>
+        <button onclick="Cart.add('bundle_beachbag','Bundle – The Beachbag Bundle',89)" class="btn-bundle" style="width:calc(100% - 2.5rem);margin:0 1.25rem 0;display:block;cursor:pointer;border:none;font-family:inherit;text-align:center">Legg i kurv</button>
       </div>
 
       <div class="bundle-tema-kort" style="--tema-gradient:linear-gradient(135deg,#a8d4c0,#3a9878)">
@@ -85,7 +91,7 @@
         <img src="bilder/produkter/bundle/bundle.svg" alt="Mermaid Mist bundle">
         <h3>Mermaid Mist</h3>
         <p>Drømmende mint-toner og et snev av magi.</p>
-        <a href="bestill.html" class="btn-bundle" style="display:block;text-align:center">Bestill bundle</a>
+        <button onclick="Cart.add('bundle_mermaid','Bundle – Mermaid Mist',89)" class="btn-bundle" style="width:calc(100% - 2.5rem);margin:0 1.25rem 0;display:block;cursor:pointer;border:none;font-family:inherit;text-align:center">Legg i kurv</button>
       </div>
 
       <div class="bundle-tema-kort" style="--tema-gradient:linear-gradient(135deg,#f2b49a,#d4784a)">
@@ -93,7 +99,7 @@
         <img src="bilder/produkter/bundle/bundle.svg" alt="Sunset Shore bundle">
         <h3>Sunset Shore</h3>
         <p>Varm korall og gull – som solnedgang over havet.</p>
-        <a href="bestill.html" class="btn-bundle" style="display:block;text-align:center">Bestill bundle</a>
+        <button onclick="Cart.add('bundle_sunset','Bundle – Sunset Shore',89)" class="btn-bundle" style="width:calc(100% - 2.5rem);margin:0 1.25rem 0;display:block;cursor:pointer;border:none;font-family:inherit;text-align:center">Legg i kurv</button>
       </div>
 
       <div class="bundle-tema-kort" style="--tema-gradient:linear-gradient(135deg,#b8d870,#5a9030)">
@@ -101,7 +107,7 @@
         <img src="bilder/produkter/bundle/bundle.svg" alt="Tropical Treasure bundle">
         <h3>Tropical Treasure</h3>
         <p>Frodige tropiske farger med liv og energi.</p>
-        <a href="bestill.html" class="btn-bundle" style="display:block;text-align:center">Bestill bundle</a>
+        <button onclick="Cart.add('bundle_tropical','Bundle – Tropical Treasure',89)" class="btn-bundle" style="width:calc(100% - 2.5rem);margin:0 1.25rem 0;display:block;cursor:pointer;border:none;font-family:inherit;text-align:center">Legg i kurv</button>
       </div>
 
     </div>
@@ -159,6 +165,7 @@
     }
   </style>
 
+  <script src="cart.js"></script>
   <script src="nav.js"></script>
 </body>
 </html>

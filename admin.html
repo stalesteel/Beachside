@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – Beachside Books</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: var(--sand); }
+
+    .admin-login-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .admin-login-box {
+      background: var(--hvit);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-hover);
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 380px;
+    }
+    .admin-login-box h2 {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+    }
+    .admin-login-box p {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--tekst-soft);
+      margin-bottom: 1.75rem;
+    }
+
+    .admin-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,253,249,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--sand-dark);
+      padding: 0 clamp(1rem,5vw,3rem);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .admin-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem clamp(1rem,5vw,3rem);
+    }
+
+    .orders-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .orders-table th {
+      text-align: left;
+      padding: 0.75rem 0.6rem;
+      border-bottom: 2px solid var(--sand-dark);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--tekst-soft);
+      font-family: var(--font-body);
+      font-weight: 500;
+    }
+    .orders-table td {
+      padding: 0.75rem 0.6rem;
+      border-bottom: 1px solid var(--sand-dark);
+      vertical-align: top;
+    }
+    .orders-table tr:hover td { background: var(--sand); }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .s-ny         { background: #fde8de; color: #d4784a; }
+    .s-bekreftet  { background: #d4ede4; color: #3a9878; }
+    .s-sendt      { background: #e8f4f8; color: #4a90a8; }
+
+    .action-btn {
+      display: inline-block;
+      margin-top: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1.5px solid;
+      background: none;
+      transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+    .action-btn:hover { opacity: 0.75; transform: translateY(-1px); }
+
+    .items-col span { display: block; font-size: 0.82rem; color: var(--tekst-soft); line-height: 1.6; }
+
+    .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+    .filter-btn {
+      padding: 0.3rem 0.85rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1.5px solid var(--sand-dark);
+      background: none;
+      font-family: var(--font-body);
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active { background: var(--tekst); color: white; border-color: var(--tekst); }
+
+    @media (max-width: 640px) {
+      .orders-table { font-size: 0.8rem; }
+      .orders-table th, .orders-table td { padding: 0.5rem 0.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div id="login-section" class="admin-login-wrap">
+    <div class="admin-login-box">
+      <h2>Beachside Books</h2>
+      <p>Admin-innlogging</p>
+      <form id="login-form" onsubmit="doLogin(event)">
+        <div class="form-group">
+          <label for="a-email">E-post</label>
+          <input type="email" id="a-email" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="a-pw">Passord</label>
+          <input type="password" id="a-pw" required autocomplete="current-password">
+        </div>
+        <p id="login-error" style="color:#d4784a;font-size:0.85rem;margin-bottom:0.75rem;display:none"></p>
+        <button type="submit" id="login-btn" class="btn btn-primary" style="width:100%">Logg inn</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADMIN -->
+  <div id="admin-section" style="display:none">
+
+    <div class="admin-nav">
+      <div style="display:flex;align-items:center;gap:1rem">
+        <img src="bilder/logo.webp" alt="Beachside Books" style="height:38px;width:auto;border-radius:0">
+        <span style="font-size:0.75rem;color:var(--tekst-soft);letter-spacing:0.12em;text-transform:uppercase">Admin</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem">
+        <span id="admin-email" style="font-size:0.82rem;color:var(--tekst-soft)"></span>
+        <button onclick="doLogout()" class="btn btn-secondary" style="font-size:0.8rem;padding:0.4rem 1rem">Logg ut</button>
+      </div>
+    </div>
+
+    <div class="admin-wrap">
+
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.75rem">
+        <h1 style="font-size:1.5rem">Bestillinger</h1>
+        <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap">
+          <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterOrders(this,'')">Alle</button>
+            <button class="filter-btn" onclick="filterOrders(this,'ny')">Nye</button>
+            <button class="filter-btn" onclick="filterOrders(this,'bekreftet')">Bekreftet</button>
+            <button class="filter-btn" onclick="filterOrders(this,'sendt')">Sendt</button>
+          </div>
+          <button onclick="loadOrders()" class="btn btn-secondary" style="font-size:0.8rem;padding:0.4rem 1rem">↻ Oppdater</button>
+        </div>
+      </div>
+
+      <p id="orders-loading" style="text-align:center;padding:3rem;color:var(--tekst-soft)">Laster bestillinger…</p>
+      <p id="orders-error" style="display:none;color:#d4784a;text-align:center;padding:2rem"></p>
+      <p id="orders-empty" style="display:none;text-align:center;padding:3rem;color:var(--tekst-soft)">Ingen bestillinger å vise.</p>
+
+      <div id="orders-table-wrap" style="display:none;overflow-x:auto;border-radius:var(--radius);box-shadow:var(--shadow);background:var(--hvit)">
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>Dato</th>
+              <th>Navn</th>
+              <th>Kontakt</th>
+              <th>Produkter</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Tilpasning</th>
+            </tr>
+          </thead>
+          <tbody id="orders-tbody"></tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    var SUPA_URL = 'https://baafyabpancqfkeouizr.supabase.co';
+    var SUPA_KEY = 'sb_publishable_mjk8_t0W467JI4ZWQDjJOA_cmv_XTHT';
+    var _token = null;
+    var _allOrders = [];
+    var _filter = '';
+
+    async function doLogin(e) {
+      e.preventDefault();
+      var btn = document.getElementById('login-btn');
+      var errEl = document.getElementById('login-error');
+      btn.disabled = true;
+      btn.textContent = 'Logger inn…';
+      errEl.style.display = 'none';
+
+      try {
+        var res = await fetch(SUPA_URL + '/auth/v1/token?grant_type=password', {
+          method: 'POST',
+          headers: { 'apikey': SUPA_KEY, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email:    document.getElementById('a-email').value,
+            password: document.getElementById('a-pw').value
+          })
+        });
+        var data = await res.json();
+        if (!res.ok) throw new Error(data.error_description || data.msg || 'Innlogging feilet');
+
+        _token = data.access_token;
+        sessionStorage.setItem('bb_admin_token', _token);
+        document.getElementById('admin-email').textContent = data.user.email;
+        showAdmin();
+        loadOrders();
+
+      } catch (err) {
+        errEl.textContent = err.message;
+        errEl.style.display = '';
+        btn.disabled = false;
+        btn.textContent = 'Logg inn';
+      }
+    }
+
+    function doLogout() {
+      _token = null;
+      sessionStorage.removeItem('bb_admin_token');
+      document.getElementById('admin-section').style.display = 'none';
+      document.getElementById('login-section').style.display = '';
+    }
+
+    function showAdmin() {
+      document.getElementById('login-section').style.display = 'none';
+      document.getElementById('admin-section').style.display = '';
+    }
+
+    async function loadOrders() {
+      document.getElementById('orders-loading').style.display = '';
+      document.getElementById('orders-table-wrap').style.display = 'none';
+      document.getElementById('orders-error').style.display = 'none';
+      document.getElementById('orders-empty').style.display = 'none';
+
+      try {
+        var res = await fetch(SUPA_URL + '/rest/v1/orders?order=created_at.desc', {
+          headers: {
+            'apikey':        SUPA_KEY,
+            'Authorization': 'Bearer ' + _token
+          }
+        });
+        if (!res.ok) throw new Error(await res.text());
+        _allOrders = await res.json();
+        document.getElementById('orders-loading').style.display = 'none';
+        renderOrders();
+
+      } catch (err) {
+        document.getElementById('orders-loading').style.display = 'none';
+        document.getElementById('orders-error').textContent = 'Feil ved lasting: ' + err.message;
+        document.getElementById('orders-error').style.display = '';
+      }
+    }
+
+    function filterOrders(btn, status) {
+      _filter = status;
+      document.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderOrders();
+    }
+
+    function renderOrders() {
+      var orders = _filter
+        ? _allOrders.filter(function (o) { return o.status === _filter; })
+        : _allOrders;
+
+      if (orders.length === 0) {
+        document.getElementById('orders-table-wrap').style.display = 'none';
+        document.getElementById('orders-empty').style.display = '';
+        return;
+      }
+
+      document.getElementById('orders-empty').style.display = 'none';
+      document.getElementById('orders-table-wrap').style.display = '';
+
+      var tbody = document.getElementById('orders-tbody');
+      tbody.innerHTML = orders.map(function (o) {
+        var d = new Date(o.created_at);
+        var dateStr = d.toLocaleDateString('nb-NO', { day:'2-digit', month:'2-digit', year:'2-digit' })
+                    + ' ' + d.toLocaleTimeString('nb-NO', { hour:'2-digit', minute:'2-digit' });
+
+        var itemsHtml = '<div class="items-col">' +
+          (o.items || []).map(function (i) {
+            return '<span>' + i.qty + '× ' + i.name + ' (' + (i.price * i.qty) + ' kr)</span>';
+          }).join('') + '</div>';
+
+        var status = o.status || 'ny';
+        var nextStatus = status === 'ny' ? 'bekreftet' : (status === 'bekreftet' ? 'sendt' : null);
+        var btnLabel  = nextStatus === 'bekreftet' ? '✓ Bekreft' : (nextStatus === 'sendt' ? '📦 Sendt' : null);
+        var actionHtml = nextStatus
+          ? '<button onclick="updateStatus(\'' + o.id + '\',\'' + nextStatus + '\')" class="action-btn s-' + nextStatus + '">' + btnLabel + '</button>'
+          : '';
+
+        return '<tr>' +
+          '<td style="white-space:nowrap;font-size:0.82rem">' + dateStr + '</td>' +
+          '<td>' + (o.customer_name || '—') + '</td>' +
+          '<td style="font-size:0.82rem">' + (o.email || '') +
+            (o.phone ? '<br><span style="color:var(--tekst-soft)">' + o.phone + '</span>' : '') + '</td>' +
+          '<td>' + itemsHtml + '</td>' +
+          '<td style="white-space:nowrap;font-weight:600">' + o.total + ' kr</td>' +
+          '<td><span class="status-badge s-' + status + '">' + status + '</span><br>' + actionHtml + '</td>' +
+          '<td style="font-size:0.82rem;color:var(--tekst-soft);max-width:160px">' + (o.special_request || '') + '</td>' +
+          '</tr>';
+      }).join('');
+    }
+
+    async function updateStatus(id, newStatus) {
+      try {
+        var res = await fetch(SUPA_URL + '/rest/v1/orders?id=eq.' + id, {
+          method: 'PATCH',
+          headers: {
+            'apikey':        SUPA_KEY,
+            'Authorization': 'Bearer ' + _token,
+            'Content-Type':  'application/json',
+            'Prefer':        'return=minimal'
+          },
+          body: JSON.stringify({ status: newStatus })
+        });
+        if (!res.ok) throw new Error(await res.text());
+        for (var i = 0; i < _allOrders.length; i++) {
+          if (_allOrders[i].id === id) { _allOrders[i].status = newStatus; break; }
+        }
+        renderOrders();
+      } catch (err) {
+        alert('Kunne ikke oppdatere status: ' + err.message);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var saved = sessionStorage.getItem('bb_admin_token');
+      if (saved) {
+        _token = saved;
+        showAdmin();
+        loadOrders();
+      }
+    });
+  </script>
+</body>
+</html>

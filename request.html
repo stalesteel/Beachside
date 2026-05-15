@@ -10,16 +10,22 @@
 
   <nav>
     <a href="index.html"><img src="bilder/logo.webp" alt="Beachside Books" class="nav-logo-img"></a>
-    <button class="nav-toggle" aria-label="Åpne meny" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="index.html">Hjem</a></li>
-      <li><a href="produkter.html">Produkter</a></li>
-      <li><a href="bundle.html">Bundle</a></li>
-      <li><a href="bestill.html">Bestill</a></li>
-      <li><a href="request.html" class="active">Personlig tilpasning</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html">Hjem</a></li>
+        <li><a href="produkter.html">Produkter</a></li>
+        <li><a href="bundle.html">Bundle</a></li>
+        <li><a href="bestill.html">Bestill</a></li>
+        <li><a href="request.html" class="active">Personlig tilpasning</a></li>
+      </ul>
+      <a href="checkout.html" class="nav-cart" aria-label="Handlekurv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="nav-cart-badge">0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Åpne meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <section style="padding:3rem clamp(1rem,5vw,3rem) 2rem;background:linear-gradient(135deg,var(--mint-soft),var(--sand));text-align:center">
@@ -109,6 +115,7 @@
     }
   </style>
 
+  <script src="cart.js"></script>
   <script src="nav.js"></script>
 </body>
 </html>

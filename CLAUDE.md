@@ -2,7 +2,7 @@
 
 ## Om nettsiden
 Nettside for salg av håndlagde produkter. Målgruppe: ungdommer og unge voksne.
-Betalingsløsning: Vipps (manuelt krav sendes etter bestilling via Google Forms).
+Betalingsløsning: Vipps (manuelt krav sendes etter bestilling – enten via handlekurv/checkout.html eller via Google Forms på bestill.html).
 
 ## Plassering på server
 Mappen ligger under: /[DOMENE]/beachside/
@@ -14,10 +14,14 @@ Mappen ligger under: /[DOMENE]/beachside/
 ```
 beachside/
   index.html          ← Forside
-  produkter.html      ← Alle produkter
-  bundle.html         ← Bundle-tilbud
-  request.html        ← Tilpasningsforespørsler
-  bestill.html        ← Bestillingsoversikt
+  produkter.html      ← Alle produkter (med Legg i kurv-knapper)
+  bundle.html         ← Bundle-tilbud (med Legg i kurv-knapper)
+  request.html        ← Info om personlig tilpasning
+  bestill.html        ← Direkte bestilling via Google Forms (fallback)
+  checkout.html       ← Handlekurv + bestillingsskjema (Supabase)
+  admin.html          ← Adminpanel – ikke i nav, kun direkte URL
+  cart.js             ← Handlekurv-logikk (localStorage + badge)
+  nav.js              ← Hamburger-meny
   style.css           ← Felles stylesheet for alle sider
   CLAUDE.md           ← Denne filen
   bilder/
@@ -96,7 +100,37 @@ Legg til nye produkter her når de kommer:
 
 ---
 
+## Supabase (handlekurv-backend)
+- **URL:** `https://baafyabpancqfkeouizr.supabase.co`
+- **Publishable key:** i cart.js og checkout.html/admin.html (trygg i frontend)
+- **Tabell:** `orders` – se SQL nedenfor
+- Bestillinger fra checkout.html POSTs til REST API med anon-nøkkel
+- Admin logger inn med Supabase Auth (e-post + passord) på admin.html
+
+### SQL for orders-tabellen (kjøres i Supabase SQL Editor én gang):
+```sql
+CREATE TABLE orders (
+  id              uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  created_at      timestamptz DEFAULT now(),
+  customer_name   text NOT NULL,
+  email           text NOT NULL,
+  phone           text,
+  items           jsonb NOT NULL,
+  total           integer NOT NULL,
+  special_request text,
+  status          text DEFAULT 'ny' NOT NULL
+);
+ALTER TABLE orders ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "anon_insert"  ON orders FOR INSERT TO anon          WITH CHECK (true);
+CREATE POLICY "auth_select"  ON orders FOR SELECT TO authenticated  USING (true);
+CREATE POLICY "auth_update"  ON orders FOR UPDATE TO authenticated  USING (true);
+```
+
+---
+
 ## Endringslogg
 | Dato | Endring |
 |------|---------|
 | 2025-XX-XX | Første versjon opprettet |
+| 2026-05-15 | Logo innlemmet, fargepalett oppdatert, split hero-layout |
+| 2026-05-15 | Handlekurv (cart.js), checkout.html, admin.html – Supabase-backend |

@@ -10,16 +10,22 @@
 
   <nav>
     <a href="index.html"><img src="bilder/logo.webp" alt="Beachside Books" class="nav-logo-img"></a>
-    <button class="nav-toggle" aria-label="Åpne meny" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="index.html">Hjem</a></li>
-      <li><a href="produkter.html" class="active">Produkter</a></li>
-      <li><a href="bundle.html">Bundle</a></li>
-      <li><a href="bestill.html">Bestill</a></li>
-      <li><a href="request.html">Personlig tilpasning</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="index.html">Hjem</a></li>
+        <li><a href="produkter.html" class="active">Produkter</a></li>
+        <li><a href="bundle.html">Bundle</a></li>
+        <li><a href="bestill.html">Bestill</a></li>
+        <li><a href="request.html">Personlig tilpasning</a></li>
+      </ul>
+      <a href="checkout.html" class="nav-cart" aria-label="Handlekurv">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="nav-cart-badge">0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Åpne meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -56,22 +62,26 @@
         <img src="bilder/produkter/notatblokk/notatblokk.svg" alt="Notatbok – The Beachbag Bundle">
         <h4>Notatbok</h4>
         <span class="pris">59 kr</span>
+        <button class="btn-cart" onclick="Cart.add('notatblokk_beachbag','Notatbok – The Beachbag Bundle',59)">Legg i kurv</button>
       </div>
       <div class="tema-produkt-kort">
         <img src="bilder/produkter/nokkelring/nokkelring.svg" alt="Nøkkelring – The Beachbag Bundle">
         <h4>Nøkkelring</h4>
         <span class="pris">19 kr</span>
+        <button class="btn-cart" onclick="Cart.add('nokkelring_beachbag','Nøkkelring – The Beachbag Bundle',19)">Legg i kurv</button>
       </div>
       <div class="tema-produkt-kort">
         <img src="bilder/produkter/bokmerker/bokmerke.svg" alt="Bokmerker – The Beachbag Bundle">
         <h4>Bokmerker <small style="font-weight:400;font-size:0.8em">(2 stk)</small></h4>
         <span class="pris">9 kr <small style="font-weight:400;font-size:0.8em">pr stk</small></span>
+        <button class="btn-cart" onclick="Cart.add('bokmerke_beachbag','Bokmerke – The Beachbag Bundle',9)">Legg i kurv</button>
       </div>
       <div class="tema-produkt-kort tema-bundle">
         <img src="bilder/produkter/bundle/bundle.svg" alt="Bundle – The Beachbag Bundle">
         <h4>Bundle</h4>
         <span class="pris">89 kr</span>
         <small style="color:var(--tekst-soft);font-size:0.78rem">1 notatbok + 1 nøkkelring + 2 bokmerker</small>
+        <button class="btn-cart" onclick="Cart.add('bundle_beachbag','Bundle – The Beachbag Bundle',89)">Legg i kurv</button>
       </div>
     </div>
     <div style="text-align:center;margin-top:1.5rem">
@@ -97,22 +107,26 @@
         <img src="bilder/produkter/notatblokk/notatblokk.svg" alt="Notatbok – Mermaid Mist">
         <h4>Notatbok</h4>
         <span class="pris">59 kr</span>
+        <button class="btn-cart" onclick="Cart.add('notatblokk_mermaid','Notatbok – Mermaid Mist',59)">Legg i kurv</button>
       </div>
       <div class="tema-produkt-kort" style="--tema-bg:#d4ede4">
         <img src="bilder/produkter/nokkelring/nokkelring.svg" alt="Nøkkelring – Mermaid Mist">
         <h4>Nøkkelring</h4>
         <span class="pris">19 kr</span>
+        <button class="btn-cart" onclick="Cart.add('nokkelring_mermaid','Nøkkelring – Mermaid Mist',19)">Legg i kurv</button>
       </div>
       <div class="tema-produkt-kort" style="--tema-bg:#d4ede4">
         <img src="bilder/produkter/bokmerker/bokmerke.svg" alt="Bokmerker – Mermaid Mist">
         <h4>Bokmerker <small style="font-weight:400;font-size:0.8em">(2 stk)</small></h4>
         <span class="pris">9 kr <small style="font-weight:400;font-size:0.8em">pr stk</small></span>
+        <button class="btn-cart" onclick="Cart.add('bokmerke_mermaid','Bokmerke – Mermaid Mist',9)">Legg i kurv</button>
       </div>
       <div class="tema-produkt-kort tema-bundle" style="--tema-bg:#d4ede4">
         <img src="bilder/produkter/bundle/bundle.svg" alt="Bundle – Mermaid Mist">
         <h4>Bundle</h4>
         <span class="pris">89 kr</span>
         <small style="color:var(--tekst-soft);font-size:0.78rem">1 notatbok + 1 nøkkelring + 2 bokmerker</small>
+        <button class="btn-cart" onclick="Cart.add('bundle_mermaid','Bundle – Mermaid Mist',89)">Legg i kurv</button>
       </div>
     </div>
     <div style="text-align:center;margin-top:1.5rem">
@@ -138,22 +152,26 @@
         <img src="bilder/produkter/notatblokk/notatblokk.svg" alt="Notatbok – Sunset Shore">
         <h4>Notatbok</h4>
         <span class="pris">59 kr</span>
+        <button class="btn-cart" onclick="Cart.add('notatblokk_sunset','Notatbok – Sunset Shore',59)">Legg i kurv</button>
       </div>
       <div class="tema-produkt-kort" style="--tema-bg:#fde8de">
         <img src="bilder/produkter/nokkelring/nokkelring.svg" alt="Nøkkelring – Sunset Shore">
         <h4>Nøkkelring</h4>
         <span class="pris">19 kr</span>
+        <button class="btn-cart" onclick="Cart.add('nokkelring_sunset','Nøkkelring – Sunset Shore',19)">Legg i kurv</button>
       </div>
       <div class="tema-produkt-kort" style="--tema-bg:#fde8de">
         <img src="bilder/produkter/bokmerker/bokmerke.svg" alt="Bokmerker – Sunset Shore">
         <h4>Bokmerker <small style="font-weight:400;font-size:0.8em">(2 stk)</small></h4>
         <span class="pris">9 kr <small style="font-weight:400;font-size:0.8em">pr stk</small></span>
+        <button class="btn-cart" onclick="Cart.add('bokmerke_sunset','Bokmerke – Sunset Shore',9)">Legg i kurv</button>
       </div>
       <div class="tema-produkt-kort tema-bundle" style="--tema-bg:#fde8de">
         <img src="bilder/produkter/bundle/bundle.svg" alt="Bundle – Sunset Shore">
         <h4>Bundle</h4>
         <span class="pris">89 kr</span>
         <small style="color:var(--tekst-soft);font-size:0.78rem">1 notatbok + 1 nøkkelring + 2 bokmerker</small>
+        <button class="btn-cart" onclick="Cart.add('bundle_sunset','Bundle – Sunset Shore',89)">Legg i kurv</button>
       </div>
     </div>
     <div style="text-align:center;margin-top:1.5rem">
@@ -179,22 +197,26 @@
         <img src="bilder/produkter/notatblokk/notatblokk.svg" alt="Notatbok – Tropical Treasure">
         <h4>Notatbok</h4>
         <span class="pris">59 kr</span>
+        <button class="btn-cart" onclick="Cart.add('notatblokk_tropical','Notatbok – Tropical Treasure',59)">Legg i kurv</button>
       </div>
       <div class="tema-produkt-kort" style="--tema-bg:#daeec8">
         <img src="bilder/produkter/nokkelring/nokkelring.svg" alt="Nøkkelring – Tropical Treasure">
         <h4>Nøkkelring</h4>
         <span class="pris">19 kr</span>
+        <button class="btn-cart" onclick="Cart.add('nokkelring_tropical','Nøkkelring – Tropical Treasure',19)">Legg i kurv</button>
       </div>
       <div class="tema-produkt-kort" style="--tema-bg:#daeec8">
         <img src="bilder/produkter/bokmerker/bokmerke.svg" alt="Bokmerker – Tropical Treasure">
         <h4>Bokmerker <small style="font-weight:400;font-size:0.8em">(2 stk)</small></h4>
         <span class="pris">9 kr <small style="font-weight:400;font-size:0.8em">pr stk</small></span>
+        <button class="btn-cart" onclick="Cart.add('bokmerke_tropical','Bokmerke – Tropical Treasure',9)">Legg i kurv</button>
       </div>
       <div class="tema-produkt-kort tema-bundle" style="--tema-bg:#daeec8">
         <img src="bilder/produkter/bundle/bundle.svg" alt="Bundle – Tropical Treasure">
         <h4>Bundle</h4>
         <span class="pris">89 kr</span>
         <small style="color:var(--tekst-soft);font-size:0.78rem">1 notatbok + 1 nøkkelring + 2 bokmerker</small>
+        <button class="btn-cart" onclick="Cart.add('bundle_tropical','Bundle – Tropical Treasure',89)">Legg i kurv</button>
       </div>
     </div>
     <div style="text-align:center;margin-top:1.5rem">
@@ -278,6 +300,7 @@
     }
   </style>
 
+  <script src="cart.js"></script>
   <script src="nav.js"></script>
 </body>
 </html>
