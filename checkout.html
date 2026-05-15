@@ -144,7 +144,7 @@
     }
 
     async function sendEmail(templateId, params) {
-      await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      var res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -154,6 +154,10 @@
           template_params: params
         })
       });
+      if (!res.ok) {
+        var txt = await res.text();
+        throw new Error('EmailJS feil (' + templateId + '): ' + txt);
+      }
     }
 
     function renderCart() {
@@ -234,6 +238,12 @@
 
         if (!res.ok) { throw new Error(await res.text()); }
 
+        document.getElementById('success-total').textContent = total;
+        document.getElementById('order-form-wrapper').style.display = 'none';
+        document.getElementById('order-success').style.display = '';
+        Cart.clear();
+        renderCart();
+
         var orderItems = formatItems(items);
         var emailParams = {
           customer_name:  payload.customer_name,
@@ -244,16 +254,18 @@
           comment:        payload.comment || '(ingen kommentar)'
         };
 
-        await Promise.all([
-          sendEmail(EJS_TPL_KUNDE, Object.assign({ to_email: payload.customer_email }, emailParams)),
-          sendEmail(EJS_TPL_ADMIN, Object.assign({ to_email: ADMIN_EMAIL },            emailParams))
-        ]);
-
-        document.getElementById('success-total').textContent = total;
-        document.getElementById('order-form-wrapper').style.display = 'none';
-        document.getElementById('order-success').style.display = '';
-        Cart.clear();
-        renderCart();
+        try {
+          await Promise.all([
+            sendEmail(EJS_TPL_KUNDE, Object.assign({}, emailParams, { to_email: payload.customer_email })),
+            sendEmail(EJS_TPL_ADMIN, Object.assign({}, emailParams, { to_email: ADMIN_EMAIL }))
+          ]);
+        } catch (emailErr) {
+          console.error(emailErr);
+          var note = document.getElementById('order-success');
+          note.insertAdjacentHTML('beforeend',
+            '<p style="color:#d4784a;font-size:0.82rem;margin-top:1rem">⚠ E-post kunne ikke sendes automatisk (' + emailErr.message + '). Ta kontakt på e-post manuelt.</p>'
+          );
+        }
 
       } catch (err) {
         btn.disabled = false;

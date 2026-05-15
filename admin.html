@@ -263,7 +263,11 @@
             'Authorization': 'Bearer ' + _token
           }
         });
-        if (!res.ok) throw new Error(await res.text());
+        if (!res.ok) {
+          var errText = await res.text();
+          if (res.status === 401 || errText.includes('JWT expired')) { doLogout(); return; }
+          throw new Error(errText);
+        }
         _allOrders = await res.json();
         document.getElementById('orders-loading').style.display = 'none';
         renderOrders();
