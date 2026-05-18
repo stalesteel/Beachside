@@ -88,14 +88,16 @@
       border: none;
       font-family: var(--font-body);
       width: 100%;
-      min-width: 120px;
+      min-width: 148px;
       outline: none;
       transition: box-shadow 0.2s;
     }
     .status-sel:focus { box-shadow: 0 0 0 2px var(--hav); }
-    .status-sel.s-ny        { background:#fde8de; color:#c0572a; }
-    .status-sel.s-bekreftet { background:#d4ede4; color:#2e7a60; }
-    .status-sel.s-sendt     { background:#e8f4f8; color:#2e7090; }
+    .status-sel.s-ubehandlet       { background:#fde8de; color:#c0572a; }
+    .status-sel.s-bekreftet        { background:#d4ede4; color:#2e7a60; }
+    .status-sel.s-vippskrav_sendt  { background:#e8f4f8; color:#2e7090; }
+    .status-sel.s-vippskrav_mottatt{ background:#f0e8f8; color:#7030a0; }
+    .status-sel.s-levert           { background:#e8f0d4; color:#3a6020; }
 
     /* ── Items ── */
     .items-col span { display:block; font-size:0.82rem; color:var(--tekst-soft); line-height:1.6; }
@@ -187,9 +189,11 @@
       <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap">
         <div class="filter-bar">
           <button class="filter-btn active" onclick="filterOrders(this,'')">Alle</button>
-          <button class="filter-btn" onclick="filterOrders(this,'ny')">Nye</button>
+          <button class="filter-btn" onclick="filterOrders(this,'ubehandlet')">Ubehandlet</button>
           <button class="filter-btn" onclick="filterOrders(this,'bekreftet')">Bekreftet</button>
-          <button class="filter-btn" onclick="filterOrders(this,'sendt')">Sendt</button>
+          <button class="filter-btn" onclick="filterOrders(this,'vippskrav_sendt')">Vippskrav sendt</button>
+          <button class="filter-btn" onclick="filterOrders(this,'vippskrav_mottatt')">Vippskrav mottatt</button>
+          <button class="filter-btn" onclick="filterOrders(this,'levert')">Levert</button>
         </div>
         <button onclick="loadOrders()" class="btn btn-secondary" style="font-size:0.8rem;padding:0.4rem 1rem">↻ Oppdater</button>
       </div>
@@ -315,7 +319,7 @@
   /* ════ RENDER ════ */
   function renderOrders() {
     var orders = _filter
-      ? _allOrders.filter(function (o) { return (o.status || 'ny') === _filter; })
+      ? _allOrders.filter(function (o) { return (o.status || 'ubehandlet') === _filter; })
       : _allOrders;
 
     if (orders.length === 0) {
@@ -332,7 +336,7 @@
     tbody.innerHTML = '';
 
     orders.forEach(function (o) {
-      var status = o.status || 'ny';
+      var status = o.status || 'ubehandlet';
       var d = new Date(o.created_at);
       var dateStr = d.toLocaleDateString('nb-NO', {day:'2-digit',month:'2-digit',year:'2-digit'})
                   + ' ' + d.toLocaleTimeString('nb-NO', {hour:'2-digit',minute:'2-digit'});
@@ -383,7 +387,7 @@
       var c6 = document.createElement('td'); c6.style.minWidth = '140px';
       var sel = document.createElement('select');
       sel.className = 'status-sel s-' + status;
-      [['ny','Ny'],['bekreftet','Bekreftet'],['sendt','Sendt']].forEach(function (pair) {
+      [['ubehandlet','Ubehandlet'],['bekreftet','Bekreftet'],['vippskrav_sendt','Vippskrav sendt'],['vippskrav_mottatt','Vippskrav mottatt'],['levert','Levert']].forEach(function (pair) {
         var opt = document.createElement('option');
         opt.value = pair[0]; opt.textContent = pair[1];
         if (pair[0] === status) opt.selected = true;

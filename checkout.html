@@ -138,9 +138,19 @@
     var EJS_PUBKEY   = 'T6nuUs6JGdDJu9AtD';
     var ADMIN_EMAIL  = 'oliviaklommestein@gmail.com';
 
+    /* Pris for personlig tilpasning per produkt-type */
+    var CUSTOM_PRICES = { notatblokk: 20, nokkelring: 15, bundle: 20 };
+    function getCustomPrice(id) {
+      return CUSTOM_PRICES[id.split('_')[0]] || 0;
+    }
+
     function formatItems(items) {
       return items.map(function (i) {
-        return i.qty + '× ' + i.name + ' — ' + (i.price * i.qty) + ' kr';
+        var line = i.qty + '× ' + i.name + ' — ' + (i.price * i.qty) + ' kr';
+        if (i.customization) {
+          line += '\n   ✏ Tilpasning: ' + i.customization + ' (+' + i.customizationPrice + ' kr)';
+        }
+        return line;
       }).join('\n');
     }
 
@@ -164,8 +174,8 @@
     function renderCart() {
       var items = Cart.getItems();
       var container = document.getElementById('cart-items');
-      var empty = document.getElementById('cart-empty');
-      var totalRow = document.getElementById('cart-total-row');
+      var empty     = document.getElementById('cart-empty');
+      var totalRow  = document.getElementById('cart-total-row');
       var submitBtn = document.getElementById('submit-btn');
 
       if (items.length === 0) {
@@ -181,20 +191,66 @@
       if (submitBtn) submitBtn.disabled = false;
 
       container.innerHTML = items.map(function (item) {
-        var safeId = item.id.replace(/'/g, "\\'");
-        return '<div class="cart-row">' +
+        var sid        = item.id;
+        var cp         = getCustomPrice(sid);
+        var hasCustom  = cp > 0 && !!item.customization;
+
+        var row = '<div class="cart-row' + (cp > 0 ? ' has-custom' : '') + '">' +
           '<div class="cart-row-name">' + item.name + '</div>' +
           '<div class="cart-row-controls">' +
-            '<button onclick="changeQty(\'' + safeId + '\',-1)" class="qty-btn">−</button>' +
+            '<button onclick="changeQty(\'' + sid + '\',-1)" class="qty-btn">−</button>' +
             '<span class="qty-val">' + item.qty + '</span>' +
-            '<button onclick="changeQty(\'' + safeId + '\',1)" class="qty-btn">+</button>' +
+            '<button onclick="changeQty(\'' + sid + '\',1)" class="qty-btn">+</button>' +
           '</div>' +
           '<div class="cart-row-price">' + (item.price * item.qty) + ' kr</div>' +
-          '<button onclick="Cart.remove(\'' + safeId + '\');renderCart()" class="cart-remove" aria-label="Fjern">×</button>' +
+          '<button onclick="Cart.remove(\'' + sid + '\');renderCart()" class="cart-remove" aria-label="Fjern">×</button>' +
           '</div>';
+
+        if (cp > 0) {
+          var safeVal = (item.customization || '').replace(/"/g, '&quot;');
+          row +=
+            '<div class="custom-section">' +
+              '<button class="custom-add-btn" id="csbtn-' + sid + '"' +
+                (hasCustom ? ' style="display:none"' : '') +
+                ' onclick="showCustomInput(\'' + sid + '\',' + cp + ')">' +
+                '✏ Legg til personlig tilpasning (+' + cp + ' kr)' +
+              '</button>' +
+              '<div class="custom-active-area" id="csarea-' + sid + '"' +
+                (!hasCustom ? ' style="display:none"' : '') + '>' +
+                '<div class="custom-input-row">' +
+                  '<span class="custom-label">✏ Tilpasning:</span>' +
+                  '<input type="text" id="csinput-' + sid + '" class="custom-input"' +
+                    ' value="' + safeVal + '"' +
+                    ' placeholder="Skriv inn ønsket tilpasning..."' +
+                    ' onblur="onCustomBlur(\'' + sid + '\',' + cp + ',this)">' +
+                  '<button class="cart-remove" onclick="removeCustomization(\'' + sid + '\')" aria-label="Fjern tilpasning">×</button>' +
+                '</div>' +
+                '<div class="custom-price-line">+' + cp + ' kr (tilpasning)</div>' +
+              '</div>' +
+            '</div>';
+        }
+        return row;
       }).join('');
 
       document.getElementById('total-amount').textContent = Cart.getTotal() + ' kr';
+    }
+
+    function showCustomInput(id, price) {
+      document.getElementById('csbtn-' + id).style.display = 'none';
+      document.getElementById('csarea-' + id).style.display = '';
+      document.getElementById('csinput-' + id).focus();
+    }
+
+    function onCustomBlur(id, price, inputEl) {
+      var val = inputEl.value.trim();
+      Cart.setCustomization(id, val, val ? price : 0);
+      if (!val) { renderCart(); }
+      else { document.getElementById('total-amount').textContent = Cart.getTotal() + ' kr'; }
+    }
+
+    function removeCustomization(id) {
+      Cart.setCustomization(id, '', 0);
+      renderCart();
     }
 
     function changeQty(id, delta) {

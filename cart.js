@@ -49,7 +49,26 @@ var Cart = (function () {
   function getItems() { return _load(); }
 
   function getTotal() {
-    return _load().reduce(function (s, i) { return s + i.price * i.qty; }, 0);
+    return _load().reduce(function (s, i) {
+      return s + i.price * i.qty + (i.customizationPrice || 0);
+    }, 0);
+  }
+
+  function setCustomization(id, text, customPrice) {
+    var items = _load();
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].id === id) {
+        if (text) {
+          items[i].customization      = text;
+          items[i].customizationPrice = customPrice;
+        } else {
+          delete items[i].customization;
+          delete items[i].customizationPrice;
+        }
+        break;
+      }
+    }
+    _save(items);
   }
 
   function clear() {
@@ -75,5 +94,5 @@ var Cart = (function () {
 
   document.addEventListener('DOMContentLoaded', function () { _badges(); });
 
-  return { add: add, remove: remove, setQty: setQty, getItems: getItems, getTotal: getTotal, clear: clear };
+  return { add: add, remove: remove, setQty: setQty, getItems: getItems, getTotal: getTotal, clear: clear, setCustomization: setCustomization };
 }());

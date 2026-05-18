@@ -857,3 +857,61 @@ footer a:hover { color: var(--korall); }
   justify-content: space-between;
   align-items: center;
 }
+
+/* ── Personlig tilpasning i handlekurven ── */
+.cart-row.has-custom { border-bottom: none; }
+
+.custom-section {
+  border-bottom: 1px solid var(--sand-dark);
+  padding: 0.3rem 0 0.65rem;
+}
+
+.custom-add-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--hav-deep);
+  padding: 0.25rem 0;
+  text-align: left;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+  display: block;
+}
+.custom-add-btn:hover { opacity: 1; }
+
+.custom-active-area { padding-top: 0.3rem; }
+
+.custom-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.custom-label {
+  font-size: 0.78rem;
+  color: var(--tekst-soft);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.custom-input {
+  flex: 1;
+  padding: 0.35rem 0.7rem;
+  border: 1.5px solid var(--mint);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  background: var(--mint-soft);
+  color: var(--tekst);
+}
+.custom-input:focus { outline: none; border-color: var(--hav); }
+
+.custom-price-line {
+  font-size: 0.8rem;
+  color: var(--hav-deep);
+  font-weight: 500;
+  padding-left: 0.2rem;
+}
