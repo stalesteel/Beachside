@@ -79,8 +79,8 @@
               <input type="tel" id="f-phone" placeholder="+47 123 45 678">
             </div>
             <div class="form-group">
-              <label for="f-request">Spesiell forespørsel / personlig tilpasning</label>
-              <textarea id="f-request" rows="3" placeholder="Ønsker, tilpasninger, frivillig ekstra beløp..."></textarea>
+              <label for="f-request">Kommentar</label>
+              <textarea id="f-request" rows="3" placeholder="Ønsker, frivillig ekstra beløp, annet..."></textarea>
             </div>
 
             <div style="background:linear-gradient(135deg,#e8f4f8,var(--mint-soft));border-radius:var(--radius-sm);padding:1rem 1.25rem;margin:1rem 0 1.5rem;font-size:0.85rem;color:var(--tekst-soft)">
@@ -148,7 +148,7 @@
       return items.map(function (i) {
         var line = i.qty + '× ' + i.name + ' — ' + (i.price * i.qty) + ' kr';
         if (i.customization) {
-          line += '\n   ✏ Tilpasning: ' + i.customization + ' (+' + i.customizationPrice + ' kr)';
+          line += '\n   ✏ Tilpasning: ' + i.customization + ' +' + i.customizationPrice + ' kr';
         }
         return line;
       }).join('\n');
@@ -217,15 +217,18 @@
               '</button>' +
               '<div class="custom-active-area" id="csarea-' + sid + '"' +
                 (!hasCustom ? ' style="display:none"' : '') + '>' +
-                '<div class="custom-input-row">' +
-                  '<span class="custom-label">✏ Tilpasning:</span>' +
-                  '<input type="text" id="csinput-' + sid + '" class="custom-input"' +
-                    ' value="' + safeVal + '"' +
-                    ' placeholder="Skriv inn ønsket tilpasning..."' +
-                    ' onblur="onCustomBlur(\'' + sid + '\',' + cp + ',this)">' +
+                '<div class="custom-active-row">' +
+                  '<div class="custom-input-cell">' +
+                    '<span class="custom-label">✏ Tilpasning</span>' +
+                    '<input type="text" id="csinput-' + sid + '" class="custom-input"' +
+                      ' value="' + safeVal + '"' +
+                      ' placeholder="Skriv inn ønsket tilpasning..."' +
+                      ' onblur="onCustomBlur(\'' + sid + '\',' + cp + ',this)">' +
+                  '</div>' +
+                  '<div></div>' +
+                  '<div class="custom-price-line">+' + cp + ' kr</div>' +
                   '<button class="cart-remove" onclick="removeCustomization(\'' + sid + '\')" aria-label="Fjern tilpasning">×</button>' +
                 '</div>' +
-                '<div class="custom-price-line">+' + cp + ' kr (tilpasning)</div>' +
               '</div>' +
             '</div>';
         }

@@ -376,6 +376,12 @@
         var sp = document.createElement('span');
         sp.textContent = i.qty + '× ' + i.name + ' (' + (i.price * i.qty) + ' kr)';
         div.appendChild(sp);
+        if (i.customization) {
+          var cs = document.createElement('span');
+          cs.style.cssText = 'padding-left:0.9rem;color:var(--hav-deep);font-style:italic';
+          cs.textContent = '✏ ' + i.customization + ' +' + i.customizationPrice + ' kr';
+          div.appendChild(cs);
+        }
       });
       c4.appendChild(div); tr.appendChild(c4);
 

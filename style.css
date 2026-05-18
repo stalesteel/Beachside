@@ -881,37 +881,44 @@ footer a:hover { color: var(--korall); }
 }
 .custom-add-btn:hover { opacity: 1; }
 
-.custom-active-area { padding-top: 0.3rem; }
+.custom-active-area { padding-top: 0.25rem; }
 
-.custom-input-row {
-  display: flex;
+/* Samme grid som .cart-row → pris-kolonnen flukter */
+.custom-active-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.3rem;
+  gap: 0.75rem;
+  padding: 0.25rem 0 0.4rem;
+}
+
+.custom-input-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
 .custom-label {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: var(--tekst-soft);
-  white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .custom-input {
-  flex: 1;
-  padding: 0.35rem 0.7rem;
+  width: 100%;
+  padding: 0.32rem 0.65rem;
   border: 1.5px solid var(--mint);
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   background: var(--mint-soft);
   color: var(--tekst);
 }
 .custom-input:focus { outline: none; border-color: var(--hav); }
 
 .custom-price-line {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--hav-deep);
-  font-weight: 500;
-  padding-left: 0.2rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-align: right;
 }
