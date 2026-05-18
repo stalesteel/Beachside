@@ -226,21 +226,27 @@
       };
 
       try {
-        var res = await fetch(SUPA_URL + '/rest/v1/orders', {
+        var res = await fetch(SUPA_URL + '/rest/v1/rpc/create_order', {
           method: 'POST',
           headers: {
             'apikey':       SUPA_KEY,
             'Authorization':'Bearer ' + SUPA_KEY,
-            'Content-Type': 'application/json',
-            'Prefer':       'return=representation'
+            'Content-Type': 'application/json'
           },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({
+            p_customer_name:   payload.customer_name,
+            p_customer_email:  payload.customer_email,
+            p_customer_phone:  payload.customer_phone,
+            p_delivery_method: payload.delivery_method,
+            p_items:           payload.items,
+            p_total_price:     payload.total_price,
+            p_comment:         payload.comment
+          })
         });
 
         if (!res.ok) { throw new Error(await res.text()); }
 
-        var inserted = await res.json();
-        var orderNumber = (inserted && inserted[0] && inserted[0].order_number) ? inserted[0].order_number : '—';
+        var orderNumber = await res.json(); // funksjonen returnerer bare heltallet
 
         document.getElementById('success-total').textContent = total;
         document.getElementById('success-order-num').textContent = orderNumber !== '—' ? '#' + orderNumber : '';
