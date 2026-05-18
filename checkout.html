@@ -100,6 +100,7 @@
             Takk for bestillingen! Vi sjekker kurven og sender et Vipps-krav så snart produktene er klare.
           </p>
           <div style="background:var(--sand);border-radius:var(--radius);padding:1.25rem;margin-bottom:1.5rem;text-align:left">
+            <p style="font-size:0.85rem;font-weight:500;margin-bottom:0.4rem">Ordrenummer: <span id="success-order-num" style="color:var(--hav-deep)"></span></p>
             <p style="font-size:0.85rem;font-weight:500;margin-bottom:0.4rem">Betaling:</p>
             <p style="font-size:0.9rem;color:var(--tekst-soft)">
               Du vil motta et Vipps-krav på <strong id="success-total"></strong> kr.
@@ -231,14 +232,18 @@
             'apikey':       SUPA_KEY,
             'Authorization':'Bearer ' + SUPA_KEY,
             'Content-Type': 'application/json',
-            'Prefer':       'return=minimal'
+            'Prefer':       'return=representation'
           },
           body: JSON.stringify(payload)
         });
 
         if (!res.ok) { throw new Error(await res.text()); }
 
+        var inserted = await res.json();
+        var orderNumber = (inserted && inserted[0] && inserted[0].order_number) ? inserted[0].order_number : '—';
+
         document.getElementById('success-total').textContent = total;
+        document.getElementById('success-order-num').textContent = orderNumber !== '—' ? '#' + orderNumber : '';
         document.getElementById('order-form-wrapper').style.display = 'none';
         document.getElementById('order-success').style.display = '';
         Cart.clear();
@@ -251,6 +256,7 @@
           customer_phone: payload.customer_phone || '—',
           order_items:    orderItems,
           total_price:    total,
+          order_number:   orderNumber,
           comment:        payload.comment || '(ingen kommentar)'
         };
 

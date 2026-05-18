@@ -134,3 +134,5 @@ CREATE POLICY "auth_update"  ON orders FOR UPDATE TO authenticated  USING (true)
 | 2025-XX-XX | Første versjon opprettet |
 | 2026-05-15 | Logo innlemmet, fargepalett oppdatert, split hero-layout |
 | 2026-05-15 | Handlekurv (cart.js), checkout.html, admin.html – Supabase-backend |
+| 2026-05-18 | EmailJS e-post til kunde og admin ved bestilling |
+| 2026-05-18 | order_number (SERIAL) lagt til orders-tabell; vises i admin, bekreftelsesside og e-postemnefelt |
