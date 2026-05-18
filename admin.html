@@ -86,19 +86,22 @@
     .s-sendt      { background: #e8f4f8; color: #4a90a8; }
 
     .action-btn {
-      display: inline-block;
-      margin-top: 0.35rem;
-      padding: 0.25rem 0.65rem;
+      display: block;
+      width: 100%;
+      margin-top: 0.4rem;
+      padding: 0.35rem 0.5rem;
       border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 500;
+      font-size: 0.78rem;
+      font-weight: 600;
       cursor: pointer;
-      border: 1.5px solid;
-      background: none;
+      border: none;
       transition: all 0.2s;
       font-family: var(--font-body);
+      text-align: center;
     }
-    .action-btn:hover { opacity: 0.75; transform: translateY(-1px); }
+    .action-btn:hover { opacity: 0.8; transform: translateY(-1px); }
+    .action-btn.btn-bekreft { background: #3a9878; color: white; }
+    .action-btn.btn-sendt   { background: #4a90a8; color: white; }
 
     .items-col span { display: block; font-size: 0.82rem; color: var(--tekst-soft); line-height: 1.6; }
 
@@ -312,20 +315,21 @@
           }).join('') + '</div>';
 
         var status = o.status || 'ny';
-        var nextStatus = status === 'ny' ? 'bekreftet' : (status === 'bekreftet' ? 'sendt' : null);
-        var btnLabel  = nextStatus === 'bekreftet' ? '✓ Bekreft' : (nextStatus === 'sendt' ? '📦 Sendt' : null);
-        var actionHtml = nextStatus
-          ? '<button onclick="updateStatus(\'' + o.id + '\',\'' + nextStatus + '\')" class="action-btn s-' + nextStatus + '">' + btnLabel + '</button>'
-          : '';
+        var actionHtml = '';
+        if (status === 'ny') {
+          actionHtml = '<button onclick="updateStatus(\'' + o.id + '\',\'bekreftet\')" class="action-btn btn-bekreft">✓ Bekreft</button>';
+        } else if (status === 'bekreftet') {
+          actionHtml = '<button onclick="updateStatus(\'' + o.id + '\',\'sendt\')" class="action-btn btn-sendt">📦 Merk sendt</button>';
+        }
 
         return '<tr>' +
           '<td style="white-space:nowrap;font-size:0.82rem">' + dateStr + '</td>' +
-          '<td>' + (o.customer_name || '—') + '</td>' +
+          '<td style="font-weight:500">' + (o.customer_name || '—') + '</td>' +
           '<td style="font-size:0.82rem"><a href="mailto:' + (o.customer_email || '') + '?subject=Ang. bestillingen din hos Beachside Books" style="color:var(--hav-deep)">' + (o.customer_email || '') + '</a>' +
             (o.customer_phone ? '<br><span style="color:var(--tekst-soft)">' + o.customer_phone + '</span>' : '') + '</td>' +
           '<td>' + itemsHtml + '</td>' +
           '<td style="white-space:nowrap;font-weight:600">' + o.total_price + ' kr</td>' +
-          '<td><span class="status-badge s-' + status + '">' + status + '</span><br>' + actionHtml + '</td>' +
+          '<td style="min-width:110px"><span class="status-badge s-' + status + '">' + status + '</span>' + actionHtml + '</td>' +
           '<td style="font-size:0.82rem;color:var(--tekst-soft);max-width:160px">' + (o.comment || '') + '</td>' +
           '</tr>';
       }).join('');
