@@ -138,9 +138,67 @@
     }
     #save-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
-    @media (max-width:640px) {
-      .orders-table { font-size:0.8rem; }
-      .orders-table th, .orders-table td { padding:0.5rem 0.4rem; }
+    /* ── Ordre-kort (mobil) ── */
+    .order-card {
+      background: var(--hvit);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 0.85rem;
+      overflow: hidden;
+    }
+    .order-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--sand-dark);
+      background: var(--sand);
+      flex-wrap: wrap;
+    }
+    .order-card-meta { display: flex; align-items: center; gap: 0.6rem; }
+    .order-card-date { font-size: 0.78rem; color: var(--tekst-soft); white-space: nowrap; }
+    .order-card-body { padding: 0.85rem 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .order-card-row { display: flex; gap: 0.5rem; font-size: 0.85rem; }
+    .order-card-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--tekst-soft);
+      font-weight: 500;
+      min-width: 70px;
+      padding-top: 0.1rem;
+    }
+    .order-card-val { flex: 1; }
+    .order-card-products .order-card-val span {
+      display: block;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .order-card-products .order-card-val .card-custom {
+      padding-left: 0.75rem;
+      color: var(--hav-deep);
+      font-style: italic;
+      font-size: 0.8rem;
+    }
+    .order-card-total .order-card-val { font-weight: 700; color: var(--tekst); }
+    .order-card-comment .order-card-val { color: var(--tekst-soft); font-size: 0.82rem; }
+    .order-card-status { flex: 1; min-width: 0; }
+    .order-card-status .status-sel { min-width: 0; width: 100%; }
+
+    /* ── Mobil-nav ── */
+    @media (max-width: 700px) {
+      #admin-email { display: none; }
+      .admin-wrap { padding: 1.25rem 0.85rem; }
+    }
+
+    /* Kortvisning kun på mobil, bordvisning kun på desktop */
+    #orders-cards { display: none; }
+    #summary-cards { display: none !important; }
+    @media (max-width: 700px) {
+      #orders-table-wrap { display: none !important; }
+      #orders-cards { display: block; }
+      #summary-cards { display: flex !important; }
     }
   </style>
 </head>
@@ -226,6 +284,13 @@
           </tr>
         </tfoot>
       </table>
+    </div>
+
+    <!-- Kortvisning (mobil) -->
+    <div id="orders-cards"></div>
+    <div id="summary-cards" style="display:none;background:var(--hvit);border-radius:var(--radius);box-shadow:var(--shadow);padding:0.85rem 1rem;margin-top:0.5rem;justify-content:space-between;align-items:center">
+      <span id="summary-cards-count" style="font-size:0.82rem;color:var(--tekst-soft)"></span>
+      <span id="summary-cards-total" style="font-weight:700;color:var(--hav-deep)"></span>
     </div>
 
   </div>
@@ -317,23 +382,59 @@
   }
 
   /* ════ RENDER ════ */
+  var STATUS_PAIRS = [
+    ['ubehandlet','Ubehandlet'],
+    ['bekreftet','Bekreftet'],
+    ['vippskrav_sendt','Vippskrav sendt'],
+    ['vippskrav_mottatt','Vippskrav mottatt'],
+    ['levert','Levert']
+  ];
+
+  function makeStatusSelect(orderId, currentStatus) {
+    var sel = document.createElement('select');
+    sel.className = 'status-sel s-' + currentStatus;
+    STATUS_PAIRS.forEach(function (pair) {
+      var opt = document.createElement('option');
+      opt.value = pair[0]; opt.textContent = pair[1];
+      if (pair[0] === currentStatus) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener('change', (function (id, el) {
+      return function () {
+        el.className = 'status-sel s-' + el.value;
+        updateStatus(id, el.value);
+      };
+    }(orderId, sel)));
+    return sel;
+  }
+
   function renderOrders() {
     var orders = _filter
       ? _allOrders.filter(function (o) { return (o.status || 'ubehandlet') === _filter; })
       : _allOrders;
 
+    var emptyEl    = document.getElementById('orders-empty');
+    var tableWrap  = document.getElementById('orders-table-wrap');
+    var cardsEl    = document.getElementById('orders-cards');
+    var summaryRow = document.getElementById('summary-row');
+    var summaryCards = document.getElementById('summary-cards');
+
     if (orders.length === 0) {
-      document.getElementById('orders-table-wrap').style.display = 'none';
-      document.getElementById('orders-empty').style.display      = '';
-      document.getElementById('summary-row').style.display       = 'none';
+      tableWrap.style.display  = 'none';
+      cardsEl.innerHTML        = '';
+      summaryRow.style.display = 'none';
+      summaryCards.style.display = 'none';
+      emptyEl.style.display    = '';
       return;
     }
 
-    document.getElementById('orders-empty').style.display      = 'none';
-    document.getElementById('orders-table-wrap').style.display = '';
+    emptyEl.style.display   = 'none';
+    tableWrap.style.display = '';
 
+    /* ── Tabell-rader (desktop) ── */
     var tbody = document.getElementById('orders-tbody');
     tbody.innerHTML = '';
+    cardsEl.innerHTML = '';
 
     orders.forEach(function (o) {
       var status = o.status || 'ubehandlet';
@@ -341,22 +442,19 @@
       var dateStr = d.toLocaleDateString('nb-NO', {day:'2-digit',month:'2-digit',year:'2-digit'})
                   + ' ' + d.toLocaleTimeString('nb-NO', {hour:'2-digit',minute:'2-digit'});
 
+      /* ── Tabellrad ── */
       var tr = document.createElement('tr');
 
-      /* # */
       var c0 = document.createElement('td'); c0.className = 'order-num';
       c0.textContent = o.order_number ? '#' + o.order_number : '—';
       tr.appendChild(c0);
 
-      /* Dato */
       var c1 = document.createElement('td'); c1.style.cssText = 'white-space:nowrap;font-size:0.82rem';
       c1.textContent = dateStr; tr.appendChild(c1);
 
-      /* Navn */
       var c2 = document.createElement('td'); c2.style.fontWeight = '500';
       c2.textContent = o.customer_name || '—'; tr.appendChild(c2);
 
-      /* Kontakt */
       var c3 = document.createElement('td'); c3.style.fontSize = '0.82rem';
       var lnk = document.createElement('a');
       lnk.href = 'mailto:' + (o.customer_email||'') + '?subject=Ang.%20bestillingen%20din%20hos%20Beachside%20Books';
@@ -369,7 +467,6 @@
       }
       tr.appendChild(c3);
 
-      /* Produkter */
       var c4 = document.createElement('td');
       var div = document.createElement('div'); div.className = 'items-col';
       (o.items || []).forEach(function (i) {
@@ -385,44 +482,111 @@
       });
       c4.appendChild(div); tr.appendChild(c4);
 
-      /* Total */
       var c5 = document.createElement('td'); c5.style.cssText = 'white-space:nowrap;font-weight:600';
       c5.textContent = (o.total_price || 0) + ' kr'; tr.appendChild(c5);
 
-      /* ── Status: nedtrekksmeny ── */
       var c6 = document.createElement('td'); c6.style.minWidth = '140px';
-      var sel = document.createElement('select');
-      sel.className = 'status-sel s-' + status;
-      [['ubehandlet','Ubehandlet'],['bekreftet','Bekreftet'],['vippskrav_sendt','Vippskrav sendt'],['vippskrav_mottatt','Vippskrav mottatt'],['levert','Levert']].forEach(function (pair) {
-        var opt = document.createElement('option');
-        opt.value = pair[0]; opt.textContent = pair[1];
-        if (pair[0] === status) opt.selected = true;
-        sel.appendChild(opt);
-      });
-      /* Endre farge når brukeren velger noe */
-      sel.addEventListener('change', (function (orderId, selectEl) {
-        return function () {
-          selectEl.className = 'status-sel s-' + selectEl.value;
-          updateStatus(orderId, selectEl.value);
-        };
-      }(o.id, sel)));
-      c6.appendChild(sel); tr.appendChild(c6);
+      c6.appendChild(makeStatusSelect(o.id, status)); tr.appendChild(c6);
 
-      /* Kommentar */
       var c7 = document.createElement('td'); c7.style.cssText = 'font-size:0.82rem;color:var(--tekst-soft);max-width:180px';
       c7.textContent = o.comment || ''; tr.appendChild(c7);
 
       tbody.appendChild(tr);
+
+      /* ── Ordre-kort (mobil) ── */
+      var card = document.createElement('div'); card.className = 'order-card';
+
+      /* Kortets topplinje */
+      var hdr = document.createElement('div'); hdr.className = 'order-card-header';
+      var meta = document.createElement('div'); meta.className = 'order-card-meta';
+      var numEl = document.createElement('span'); numEl.className = 'order-num';
+      numEl.textContent = o.order_number ? '#' + o.order_number : '—';
+      var dateEl = document.createElement('span'); dateEl.className = 'order-card-date';
+      dateEl.textContent = dateStr;
+      meta.appendChild(numEl); meta.appendChild(dateEl);
+
+      var statusWrap = document.createElement('div'); statusWrap.className = 'order-card-status';
+      statusWrap.appendChild(makeStatusSelect(o.id, status));
+
+      hdr.appendChild(meta); hdr.appendChild(statusWrap);
+      card.appendChild(hdr);
+
+      /* Kortets innhold */
+      var body = document.createElement('div'); body.className = 'order-card-body';
+
+      function cardRow(labelText, className) {
+        var row = document.createElement('div');
+        row.className = 'order-card-row' + (className ? ' ' + className : '');
+        var lbl = document.createElement('div'); lbl.className = 'order-card-label';
+        lbl.textContent = labelText;
+        var val = document.createElement('div'); val.className = 'order-card-val';
+        row.appendChild(lbl); row.appendChild(val);
+        return { row: row, val: val };
+      }
+
+      /* Navn */
+      var nameRow = cardRow('Navn', '');
+      nameRow.val.style.fontWeight = '600';
+      nameRow.val.textContent = o.customer_name || '—';
+      body.appendChild(nameRow.row);
+
+      /* Kontakt */
+      var contactRow = cardRow('Kontakt', '');
+      var emailA = document.createElement('a');
+      emailA.href = 'mailto:' + (o.customer_email||'') + '?subject=Ang.%20bestillingen%20din%20hos%20Beachside%20Books';
+      emailA.style.color = 'var(--hav-deep)';
+      emailA.textContent = o.customer_email || '';
+      contactRow.val.appendChild(emailA);
+      if (o.customer_phone) {
+        contactRow.val.appendChild(document.createElement('br'));
+        var phCard = document.createElement('span'); phCard.style.color = 'var(--tekst-soft)';
+        phCard.textContent = o.customer_phone; contactRow.val.appendChild(phCard);
+      }
+      body.appendChild(contactRow.row);
+
+      /* Produkter */
+      var prodRow = cardRow('Produkter', 'order-card-products');
+      (o.items || []).forEach(function (i) {
+        var spCard = document.createElement('span');
+        spCard.textContent = i.qty + '× ' + i.name + ' (' + (i.price * i.qty) + ' kr)';
+        prodRow.val.appendChild(spCard);
+        if (i.customization) {
+          var csCard = document.createElement('span'); csCard.className = 'card-custom';
+          csCard.textContent = '✏ ' + i.customization + ' +' + i.customizationPrice + ' kr';
+          prodRow.val.appendChild(csCard);
+        }
+      });
+      body.appendChild(prodRow.row);
+
+      /* Total */
+      var totalRow = cardRow('Total', 'order-card-total');
+      totalRow.val.textContent = (o.total_price || 0) + ' kr';
+      body.appendChild(totalRow.row);
+
+      /* Kommentar */
+      if (o.comment) {
+        var commentRow = cardRow('Kommentar', 'order-card-comment');
+        commentRow.val.textContent = o.comment;
+        body.appendChild(commentRow.row);
+      }
+
+      card.appendChild(body);
+      cardsEl.appendChild(card);
     });
 
     /* Summering */
-    var sum   = orders.reduce(function (a, o) { return a + (o.total_price || 0); }, 0);
+    var sum = orders.reduce(function (a, o) { return a + (o.total_price || 0); }, 0);
     var label = _filter
       ? orders.length + ' ' + _filter + (orders.length === 1 ? ' ordre' : ' ordrer')
       : orders.length + (orders.length === 1 ? ' ordre totalt' : ' ordrer totalt');
     document.getElementById('summary-count').textContent = label;
     document.getElementById('summary-total').textContent = sum + ' kr';
-    document.getElementById('summary-row').style.display = '';
+    summaryRow.style.display = '';
+
+    /* Summering for kortvisning */
+    document.getElementById('summary-cards-count').textContent = label;
+    document.getElementById('summary-cards-total').textContent = sum + ' kr';
+    summaryCards.style.display = 'flex';
   }
 
   /* ════ OPPDATER STATUS ════ */
